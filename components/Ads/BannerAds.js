@@ -14,16 +14,16 @@ function BannerAds() {
 
             {/* Mobile  */}
 
-            <div className='lg:hidden'>
+            {/* <div className='lg:hidden'>
                 <Banner zoneId={4580186} />
-            </div>
+            </div> */}
 
 
             {/* Web  */}
 
-            <div className='hidden lg:flex'>
+            {/* <div className='hidden lg:flex'>
                 <Banner zoneId={4580008} />
-            </div>
+            </div> */}
 
 
         </div>
