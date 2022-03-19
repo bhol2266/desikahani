@@ -8,7 +8,7 @@ import { Fragment, useEffect, useState } from 'react'
 
 
 import {
-    PencilAltIcon, EyeIcon, FilterIcon, ScaleIcon, FolderIcon, TagIcon
+    PencilAltIcon, EyeIcon, ChevronRightIcon, ScaleIcon, FolderIcon, TagIcon
 } from '@heroicons/react/solid';
 import { Menu, Transition } from '@headlessui/react'
 
@@ -39,7 +39,7 @@ function Story({ story_details }) {
                             Text Size
                             {/* <img className='ml-2' src='https://cdn-icons.flaticon.com/png/512/2043/premium/2043488.png?token=exp=1647712043~hmac=80017e50d71fb76634fd067d627f6063' alt='loading' height={14} width={14}></img> */}
                         </Menu.Button>
-                     
+
                     </div>
 
                     <Transition
@@ -130,18 +130,24 @@ function Story({ story_details }) {
                 <div className='my-2'>
                     {story_details.storiesLink_insideParagrapgh.map(item => {
                         return (
-                            <p className='underline hover:text-red-800 cursor-pointer ' key={item.href}>{item.title}</p>
+                            <div key={item.href} className='flex'>
+                                <ChevronRightIcon className='icon' />
+                                <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                            </div>
                         )
                     })}
                 </div>
 
                 <p className='my-2 text-lg text-red-800 font-semibold'>ऐसी ही कुछ और कहानियाँ</p>
-                
+
 
                 <div className='my-2'>
                     {story_details.relatedStoriesLinks.map(item => {
                         return (
-                            <p className='underline hover:text-red-800 cursor-pointer ' key={item.href}>{item.title}</p>
+                            <div key={item.href} className='flex'>
+                                <ChevronRightIcon className='icon' />
+                                <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                            </div>
                         )
                     })}
                 </div>
@@ -295,7 +301,7 @@ export async function getServerSideProps(context) {
             storiesLink_insideParagrapgh: storiesLink_insideParagrapgh,
             category: category,
             tagsArray: tagsArray,
-            relatedStoriesLinks:relatedStoriesLinks
+            relatedStoriesLinks: relatedStoriesLinks
         }
 
     }
