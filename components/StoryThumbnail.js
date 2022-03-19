@@ -11,7 +11,7 @@ function StoryThumbnail({ story_details }) {
 
     // style={{backgroundImage: "url('https://cdn-icons-png.flaticon.com/512/3946/3946329.png')"}}
     return (
-        <div class=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
+        <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
             <p className='text-2xl font-semibold text-red-700 cursor-pointer hover:text-green-700  '>{story_details.Title}</p>
             <div className='flex items-center text-xl  my-2 space-x-2'>
 
