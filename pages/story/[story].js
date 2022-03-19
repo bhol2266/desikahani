@@ -6,8 +6,9 @@ import fetchdata from 'node-fetch';
 import Head from 'next/head'
 import { Fragment, useEffect, useState } from 'react'
 
+
 import {
-    PencilAltIcon, EyeIcon, FilterIcon,ScaleIcon
+    PencilAltIcon, EyeIcon, FilterIcon, ScaleIcon, FolderIcon, TagIcon
 } from '@heroicons/react/solid';
 import { Menu, Transition } from '@headlessui/react'
 
@@ -18,7 +19,7 @@ function Story({ story_details }) {
 
     const [fontSize, setfontSize] = useState('lg')
 
-    const filter = [{ sizeName: 'Small', sizecode: 'sm' }, { sizeName: 'Medium', sizecode: 'md' }, { sizeName: 'Large', sizecode: 'lg' }, { sizeName: 'XL', sizecode: 'xl' },{ sizeName: '2XL', sizecode: '2xl' },]
+    const filter = [{ sizeName: 'Small', sizecode: 'sm' }, { sizeName: 'Medium', sizecode: 'md' }, { sizeName: 'Large', sizecode: 'lg' }, { sizeName: 'XL', sizecode: 'xl' }, { sizeName: '2XL', sizecode: '2xl' },]
 
     const fontSizeChangerOnclick = (sizeCode) => {
         setfontSize(sizeCode)
@@ -33,14 +34,12 @@ function Story({ story_details }) {
 
                 <p className='text-xl md:text-2xl font-semibold text-red-700'>{story_details.Title}</p>
                 <Menu as="div" className={` relative  text-left  md:scale-125 `}>
-                    <div className=' w-fit'>
-                        <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    <div className=' w-fit '>
+                        <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md border border-gray-300 shadow-sm px-1 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
                             Text Size
-                            <img className='ml-2' src='https://cdn-icons.flaticon.com/png/512/2043/premium/2043488.png?token=exp=1647712043~hmac=80017e50d71fb76634fd067d627f6063' alt='loading' height={16} width={16}></img>
+                            {/* <img className='ml-2' src='https://cdn-icons.flaticon.com/png/512/2043/premium/2043488.png?token=exp=1647712043~hmac=80017e50d71fb76634fd067d627f6063' alt='loading' height={14} width={14}></img> */}
                         </Menu.Button>
-                        <p className='text-gray-700 block px-4 text-sm font-semibold hover:bg-green-200 hover:text-red-500'
-                        >
-                        </p>
+                     
                     </div>
 
                     <Transition
@@ -98,14 +97,56 @@ function Story({ story_details }) {
 
             {story_details.description.map(p => {
                 return (
-                    <p className={`text-gray-800 text-${fontSize}`} key={p}>
-                        {p}
-                    </p>
+                    <div key={p}>
+                        <p className={`text-gray-800 text-${fontSize}`} >
+                            {p}
+                            <br />
+                        </p>
+                        <br></br>
+                    </div>
                 )
             })}
 
 
+            <div>
+                <div className='flex'>
+                    <FolderIcon className='icon text-orange-700' />
+                    <p>{story_details.category.title}</p>
+                </div>
+                <div className='flex'>
+                    <TagIcon className='icon text-orange-700' />
+                    <div className='flex flex-wrap space-x-1'>
 
+                        {story_details.tagsArray.map(tag => {
+                            return (
+
+                                <p className='hover:text-red-800 cursor-pointer font-semibold underline rounded text-xs m- border-gray-500  ' key={tag}>{tag}</p>
+                            )
+                        })}
+                    </div>
+                </div>
+
+
+                <div className='my-2'>
+                    {story_details.storiesLink_insideParagrapgh.map(item => {
+                        return (
+                            <p className='underline hover:text-red-800 cursor-pointer ' key={item.href}>{item.title}</p>
+                        )
+                    })}
+                </div>
+
+                <p className='my-2 text-lg text-red-800 font-semibold'>ऐसी ही कुछ और कहानियाँ</p>
+                
+
+                <div className='my-2'>
+                    {story_details.relatedStoriesLinks.map(item => {
+                        return (
+                            <p className='underline hover:text-red-800 cursor-pointer ' key={item.href}>{item.title}</p>
+                        )
+                    })}
+                </div>
+
+            </div>
 
 
 
@@ -133,6 +174,10 @@ export async function getServerSideProps(context) {
         var views = ''
         var description = []
         var audiolink = ''
+        var storiesLink_insideParagrapgh = []
+        var relatedStoriesLinks = []
+        var category = {}
+        var tagsArray = []
 
 
         const response = await fetchdata(url)
@@ -177,12 +222,67 @@ export async function getServerSideProps(context) {
 
         })
 
+        $('.entry-content p a').each((i, el) => {
+            const href = $(el).attr('href')
+            const data = $(el).text()
+            if (!data.includes('protected'))
+                storiesLink_insideParagrapgh.push({
+                    title: data,
+                    href: href
+                })
+        })
+
+        $('.prev a').each((i, el) => {
+            const href = $(el).attr('href')
+            const data = $(el).text()
+            if (!data.includes('protected'))
+                storiesLink_insideParagrapgh.push({
+                    title: data,
+                    href: href
+                })
+        })
+        $('.next a').each((i, el) => {
+            const href = $(el).attr('href')
+            const data = $(el).text()
+            if (!data.includes('protected'))
+                storiesLink_insideParagrapgh.push({
+                    title: data,
+                    href: href
+                })
+        })
+        $('.cat-links a').each((i, el) => {
+            const href = $(el).attr('href')
+            const data = $(el).text()
+            if (!data.includes('protected'))
+                category = {
+                    title: data,
+                    href: href
+                }
+        })
+        $('ol li a').each((i, el) => {
+            const href = $(el).attr('href')
+            const data = $(el).text()
+            relatedStoriesLinks.push({
+                title: data,
+                href: href
+            })
+        })
+
+        $('.tags-links').each((i, el) => {
+
+            const select = cheerio.load(el)
+            select('a').each((i, el) => {
+                const data = $(el).text()
+                tagsArray.push(data)
+            })
+
+        })
+
         $('.wp-audio-shortcode source').each((i, el) => {
             const data = $(el).attr('src')
             audiolink = data
 
         })
-
 
 
         story_details = {
@@ -191,15 +291,19 @@ export async function getServerSideProps(context) {
             date: date,
             views: views,
             description: description,
-            audiolink: audiolink != null ? audiolink : ''
+            audiolink: audiolink != null ? audiolink : '',
+            storiesLink_insideParagrapgh: storiesLink_insideParagrapgh,
+            category: category,
+            tagsArray: tagsArray,
+            relatedStoriesLinks:relatedStoriesLinks
         }
 
     }
 
 
 
-    await scrape(link)
-    // await scrape('https://www.freesexkahani.com/antarvasna/gang-bang-porn-story/')
+    // await scrape(link)
+    await scrape('https://www.freesexkahani.com/antarvasna/free-bhabhi-porn-story/')
 
 
 
