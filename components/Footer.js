@@ -13,14 +13,14 @@ function Footer() {
 
     return (
 
-        <div className={`font-footer mx-auto bg-red-500  ${spinnerLoading ? "hidden":""}`}>
+        <div className={`font-footer mx-auto bg-blue-300  ${spinnerLoading ? "hidden" : ""}`}>
             < div className=" w-4/5 mx-auto p-1 mt-1 flex items-center justify-between ">
                 <div className=" flex flex-wrap justify-between min-w-full">
                     <Link
                         passHref={true}
                         href={'/contact'}
                     >
-                    <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">Contact / support</p>
+                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">Contact / support</p>
                     </Link>
 
 
@@ -39,7 +39,7 @@ function Footer() {
 
                     </Link>
 
-             
+
 
                     <Link
                         passHref={true}

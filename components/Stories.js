@@ -7,21 +7,22 @@ import videosContext from '../context/videos/videosContext'
 import BannerAds from './Ads/BannerAds'
 import Outstream from './Ads/Outstream'
 import RecommendedAds from './Ads/RecommendedAds'
+import StoryThumbnail from "./StoryThumbnail";
 
 
-function Videos({ data }) {
+function Stories({ stories }) {
 
 
 
     return (
         <div className="">
             <BannerAds />
-            <div className='grid grid-cols-2 p-1  gap-x-1  sm:pl-4 sm:pr-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+            <div className='grid grid-cols-1 p-1'
             >
                 {
-                    data.map(video => {
+                    stories.map(story => {
                         return (
-                            <VideoThumbnail key={video.thumbnailArray} details={video} />
+                            <StoryThumbnail key={story.Title} story_details={story} />
                         )
                     })
                 }
@@ -34,4 +35,4 @@ function Videos({ data }) {
     )
 }
 
-export default Videos
+export default Stories

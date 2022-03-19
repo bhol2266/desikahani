@@ -109,7 +109,7 @@ function Navbar() {
 
         <div>
 
-            <div className="bg-red-500 p-2  shadow-md lg:hidden">
+            <div className="bg-blue-300 p-2  shadow-md lg:hidden">
 
                 <Disclosure as="nav" >
                     {({ open }) => (
@@ -119,7 +119,7 @@ function Navbar() {
                                 <div className='flex items-center space-x-1' >
 
                                     <Link href='/'>
-                                        <p className=' align-center text-center font-body text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6'>Chutlunds.live</p>
+                                        <p className=' align-center text-center font-body text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6'>Desi Kahaniya</p>
                                     </Link>
                                     {location &&
                                         <div className='cursor-pointer' onClick={handleClickFlag}>
@@ -241,12 +241,12 @@ function Navbar() {
 
 
                 {/* Navbar */}
-                <div className='flex items-center justify-between bg-red-500 pt-2 pb-2 '>
+                <div className='flex items-center justify-between bg-blue-300 pt-2 pb-2 '>
 
                     <div className='flex items-center space-x-1 md:space-x-3 ' >
                         <Link href='/'>
 
-                            <p className=' align-center text-center font-body text-4xl cursor-pointer lg:text-left lg:ml-6'>Chutlunds.live</p>
+                            <p className=' align-center text-center font-body text-4xl cursor-pointer lg:text-left lg:ml-6'>Desi Kahaniya</p>
 
                         </Link>
                         {location &&

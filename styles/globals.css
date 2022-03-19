@@ -12,7 +12,7 @@
 
 
     .icon {
-        @apply h-6 w-6 m-1 hover:scale-125 transform transition duration-200
+        @apply h-6 w-6 mr-1 hover:scale-125 transform transition duration-200
     }
     .dark{
         @apply bg-black text-white border-gray-800 
