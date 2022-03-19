@@ -13,7 +13,7 @@ import { Menu, Transition } from '@headlessui/react'
 
 
 
-function story({ story_details }) {
+function Story({ story_details }) {
 
 
     const [fontSize, setfontSize] = useState('lg')
@@ -31,7 +31,7 @@ function story({ story_details }) {
             </Head>
             <div className='flex items-center justify-between'>
 
-                <p className='text-xl md:text-2xl font-semibold text-red-700 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
+                <p className='text-xl md:text-2xl font-semibold text-red-700'>{story_details.Title}</p>
                 <Menu as="div" className={` relative  text-left  md:scale-125 `}>
                     <div className=' w-fit'>
                         <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -114,7 +114,7 @@ function story({ story_details }) {
     )
 }
 
-export default story
+export default Story
 
 
 export async function getServerSideProps(context) {
