@@ -23,10 +23,10 @@ function StoryThumbnail({ story_details }) {
     return (
         <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
             <p onClick={onClickHandler}  className='text-xl font-semibold text-red-700 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
-            <div className='flex items-center text-lg  my-2 space-x-2'>
+            <div className='flex items-center text-sm  my-2 space-x-2'>
 
                 <div className='flex  items-center '>
-                    <PencilAltIcon className='icon text-red-500' />
+                    <PencilAltIcon className='icon text-brown-400' />
                     <p className='font-semibold text-gray-600' >{story_details.author}</p>
                 </div>
                 <p className='font-semibold text-gray-600'>{story_details.date}</p>
@@ -38,7 +38,7 @@ function StoryThumbnail({ story_details }) {
             </div>
 
 
-            <p className='font-semibold text-gray-800 text-md'>{story_details.description}</p>
+            <p className='text-gray-800 text-lg'>{story_details.description}</p>
 
 
             <p onClick={onClickHandler} className=' mb-1 font-semibold text-md text-right text-red-700 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
