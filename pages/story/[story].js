@@ -14,7 +14,6 @@ function story({ story_details }) {
 
     console.log(story_details.audiolink);
 
-    const router = useRouter()
 
     return (
         <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
