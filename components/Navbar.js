@@ -24,7 +24,6 @@ import Link from 'next/link';
 
 var navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Category', href: '/category', current: false },
     { name: 'Leaked Pictures', href: '/pics/1', current: false },
     { name: 'Community', href: '#', current: false },
     { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
@@ -267,16 +266,13 @@ function Navbar() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className=" z-50 origin-top-right absolute left-0 mt-2 w-fit rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className=" z-50 origin-top-right absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
 
                             {categories.map(item => {
                                 return (
                                     <Menu.Item key={item.category_title}  >
                                         {({ active }) => (
-                                            <p onClick={() => { router.push(`/category/${item.href}-page1`) }} className={classNames(
-                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
-                                            )}
+                                            <p onClick={() => { router.push(`/category/${item.href}-page1`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
                                             >
                                                 {item.category_title}
                                             </p>
