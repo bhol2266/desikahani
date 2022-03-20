@@ -71,7 +71,6 @@ export default function Home() {
 
 
       <main className="flex ">
-        <Sidebar />
         <div>
           <p className="text-center text-xl font-semibold rounded-lg border-2 border-gray-300 shadow-md p-2 m-1 bg-orange-100">
             अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ

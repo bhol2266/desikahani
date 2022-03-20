@@ -22,7 +22,7 @@ function StoryThumbnail({ story_details }) {
 
     return (
         <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
-            <p onClick={onClickHandler}  className='text-xl font-semibold text-red-700 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
+            <p onClick={onClickHandler}  className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
             <div className='flex items-center text-sm  my-2 space-x-2'>
 
                 <div className='flex  items-center '>
@@ -41,7 +41,7 @@ function StoryThumbnail({ story_details }) {
             <p className='text-gray-800 text-lg'>{story_details.description}</p>
 
 
-            <p onClick={onClickHandler} className=' mb-1 font-semibold text-md text-right text-red-700 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
+            <p onClick={onClickHandler} className=' mb-1 font-semibold text-md text-right text-orange-800 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
 
 
             <div className='flex flex-wrap space-x-1'>

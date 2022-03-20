@@ -79,15 +79,7 @@ function Navbar() {
 
         }
     }
-    const goSearch = (e) => {
-        e.preventDefault();
-
-        if (e.target[0].value) {
-            router.push(`/search/${e.target[0].value.trim()}**1`)
-
-        }
-
-    }
+  
 
     const chutlundClick = () => {
         setsearchBarVisibility('hidden')
@@ -196,16 +188,7 @@ function Navbar() {
                     )}
                 </Disclosure>
 
-                <div className={`p-1 ${searchBarVisibility}  transition ease-in-out delay-150 mt-2 `}>
-
-                    <form className=' w-full flex ' onSubmit={goSearch}>
-
-                        <input ref={searchInputref} className='flex-grow border-2 border-gray-300 rounded pl-2  ' type="text" placeholder='Search your favourite porn video...' />
-
-                        <button type="submit" className='bg-red-800  hover:bg-red-900 text-white text-sm p-2 pl-4 pr-4 m-1 rounded '>Search</button>
-
-                    </form>
-                </div>
+          
 
 
 
@@ -281,16 +264,7 @@ function Navbar() {
 
 
                     <div className='flex space-x-4 items-center  '>
-                        <form className=' flex items-center ' onSubmit={goSearch}>
-
-                            <input ref={searchInputref} className='flex-grow border-2 border-gray-300 rounded pl-2 h-10  ' type="text" placeholder='Search your favourite porn video...' />
-
-                            <button type="submit" className='bg-red-800  hover:bg-red-900 text-white text-sm h-10  pl-4 pr-4 m-1 rounded '>Search</button>
-
-                        </form>
-                        <button className='bg-black rounded text-yellow-500 h-10 pl-3 pr-3 text-xl hover:text-white'>
-                            Upload
-                        </button>
+                      
 
                         <div >
                             <button className='p-1 pl-2 pr-2 border-2 border-black  rounded-l'>
@@ -300,11 +274,6 @@ function Navbar() {
                             </button>
                         </div>
 
-                        <div className='flex items-center '>
-                            <UserIcon className='h-8 w-8' />
-                            <p className=' m-2 border-2 rounded border-black  pl-2 pr-2 font-bold cursor-pointer hover:bg-red-800'>Login</p>
-                            <p className='m-1 border-2 rounded border-black  pl-2 pr-2 font-bold cursor-pointer hover:bg-red-800'>Register</p>
-                        </div>
                     </div>
 
                 </div>

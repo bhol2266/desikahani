@@ -34,7 +34,8 @@ function MyApp({ Component, pageProps }) {
       <VideoState>
 
         <Navbar />
-        <div className=''>
+        <div className='flex'>
+          <Sidebar />
           <Component {...pageProps} />
         </div>
         <hr />

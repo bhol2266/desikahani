@@ -32,7 +32,7 @@ function Story({ story_details }) {
             </Head>
             <div className='flex items-center justify-between'>
 
-                <p className='text-xl md:text-2xl font-semibold text-red-700'>{story_details.Title}</p>
+                <p className='text-xl md:text-2xl font-semibold text-orange-800'>{story_details.Title}</p>
                 <Menu as="div" className={` relative  text-left  md:scale-125 `}>
                     <div className=' w-fit '>
                         <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md border border-gray-300 shadow-sm px-1 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -108,7 +108,7 @@ function Story({ story_details }) {
             })}
 
 
-            <div>
+            <div >
                 <div className='flex'>
                     <FolderIcon className='icon text-orange-700' />
                     <p>{story_details.category.title}</p>
@@ -308,8 +308,8 @@ export async function getServerSideProps(context) {
 
 
 
-    // await scrape(link)
-    await scrape('https://www.freesexkahani.com/antarvasna/free-bhabhi-porn-story/')
+    await scrape(link)
+    // await scrape('https://www.freesexkahani.com/antarvasna/free-bhabhi-porn-story/')
 
 
 
