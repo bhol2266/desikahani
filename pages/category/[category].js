@@ -190,7 +190,7 @@ export async function getServerSideProps(context) {
                 author_link: author_link[index],
                 date: dateArray[index],
                 views: viewsArray[index],
-                description: descriptionArray[index],
+                description: descriptionArray[index] ? descriptionArray[index] : "",
                 href: hrefArray[index],
                 tags: tagsArray[index],
 

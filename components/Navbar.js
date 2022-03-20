@@ -13,8 +13,7 @@ import {
     MenuIcon,
     SearchIcon,
     SunIcon,
-    LoginIcon,
-    UserIcon
+    ChevronDownIcon, UserIcon
 
 } from '@heroicons/react/outline'
 import { useRouter } from 'next/router';
@@ -32,6 +31,71 @@ var navigation = [
     { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
 ]
 
+const categories = [
+
+    {
+        category_title: 'Aunty Sex Story',
+        href: 'aunty-sex'
+    },
+
+    {
+        category_title: 'Bhabhi Sex',
+        href: 'bhabhi-sex'
+    },
+    {
+        category_title: 'Desi Kahani',
+        href: 'desi-kahani'
+    },
+
+    {
+        category_title: 'Family Sex Stories',
+        href: 'family-sex-stories'
+    },
+    {
+        category_title: 'First Time Sex',
+        href: 'first-time-sex'
+    },
+    {
+        category_title: 'Gay Sex Stories In Hindi',
+        href: 'gay-sex-story-hindi'
+    },
+    {
+        category_title: 'Group Sex Stories',
+        href: 'group-sex-stories'
+    },
+    {
+        category_title: 'Indian Sex Stories',
+        href: 'indian-sex-stories'
+    },
+    {
+        category_title: 'Sali Sex',
+        href: 'sali-sex'
+    },
+    {
+        category_title: 'Teacher Sex',
+        href: 'teacher-sex'
+    },
+    {
+        category_title: 'Teenage Girl',
+        href: 'teenage-girl'
+    },
+    {
+        category_title: 'XXX Kahani',
+        href: 'xxx-kahani'
+    },
+    {
+        category_title: 'अन्तर्वासना',
+        href: 'antarvasna'
+    },
+    {
+        category_title: 'हिंदी सेक्स स्टोरीज',
+        href: 'hindi-sex-stories'
+    },
+
+
+
+]
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
@@ -41,7 +105,7 @@ function Navbar() {
 
     const router = useRouter();
     const context = useContext(videosContext);
-    const { currentLocation, getVideos, countryBlocked } = context;
+    const { currentLocation, countryBlocked } = context;
 
     const [location, setlocation] = useState(currentLocation)
 
@@ -52,12 +116,6 @@ function Navbar() {
         }
 
     }, [])
-
-
-
-
-
-
 
 
     const enableLightMode = () => {
@@ -79,21 +137,11 @@ function Navbar() {
 
         }
     }
-  
+
 
     const chutlundClick = () => {
         setsearchBarVisibility('hidden')
         searchInputref.current.value = ''
-    }
-
-    const handleClickFlag = () => {
-        router.push({
-            pathname: '/VideosList',
-            query: {
-                key: location.country_name,
-                name: `Trending Porn videos in ${location.country_name}`
-            }
-        })
     }
 
 
@@ -101,7 +149,7 @@ function Navbar() {
 
         <div>
 
-            <div className="bg-blue-300 p-2  shadow-md lg:hidden">
+            <div className=" bg-orange-300  p-2  shadow-md lg:hidden">
 
                 <Disclosure as="nav" >
                     {({ open }) => (
@@ -114,7 +162,7 @@ function Navbar() {
                                         <p className=' align-center text-center font-body text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6'>Desi Kahaniya</p>
                                     </Link>
                                     {location &&
-                                        <div className='cursor-pointer' onClick={handleClickFlag}>
+                                        <div className='cursor-pointer'>
                                             <ReactCountryFlag
                                                 svg
                                                 countryCode={location.country_code}
@@ -172,7 +220,7 @@ function Navbar() {
                                                 <Disclosure.Button
                                                     as="a"
                                                     className={classNames(
-                                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white',
                                                         'block px-3 py-2 rounded-md text-base font-medium'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
@@ -188,28 +236,67 @@ function Navbar() {
                     )}
                 </Disclosure>
 
-          
+
 
 
 
             </div>
-            <div className='flex justify-evenly items-center mb-1 bg-red-100 shadow-lg lg:hidden '>
+            <div className='flex justify-evenly items-center mb-1 bg-orange-200 shadow-lg lg:hidden '>
 
                 <Link href='/'>
                     <a >
-                        <p className='font-bold sm:text-xl text-green-900  text-center p-1 pr-6 hover:text-red-600  '>Home</p>
+                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  '>Home</p>
                     </a>
                 </Link>
 
-                <Link href='/category'>
-                    <a >
-                        <p className='font-bold sm:text-xl text-green-900  text-center p-1 pr-6 hover:text-red-600  '>Catergories</p>
-                    </a>
-                </Link>
-                
+                <Menu as="div" className={` relative  text-left`}>
+                    <div className=' w-fit'>
+                        <Menu.Button className="flex items-center font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
+                            Categories
+                            <ChevronDownIcon className='h-6 pt-1 ml-1' />
+                        </Menu.Button>
+
+                    </div>
+
+                    <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                    >
+                        <Menu.Items className=" z-50 origin-top-right absolute left-0 mt-2 w-fit rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+
+                            {categories.map(item => {
+                                return (
+                                    <Menu.Item key={item.category_title}  >
+                                        {({ active }) => (
+                                            <p onClick={() => { router.push(`/category/${item.href}-page1`) }} className={classNames(
+                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                'block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
+                                            )}
+                                            >
+                                                {item.category_title}
+                                            </p>
+                                        )}
+                                    </Menu.Item>
+
+
+
+                                )
+                            })}
+
+
+
+                        </Menu.Items>
+                    </Transition>
+                </Menu>
+
                 <Link href='/pics/1'>
                     <a >
-                        <p className='font-bold sm:text-xl text-green-900  text-center p-1 pr-6 hover:text-red-600 '>Leaked Pictures</p>
+                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
                     </a>
                 </Link>
 
@@ -224,7 +311,7 @@ function Navbar() {
 
 
                 {/* Navbar */}
-                <div className='flex items-center justify-between bg-blue-300 pt-2 pb-2 '>
+                <div className='flex items-center justify-between  bg-orange-300  pt-2 pb-2 '>
 
                     <div className='flex items-center space-x-1 md:space-x-3 ' >
                         <Link href='/'>
@@ -234,7 +321,7 @@ function Navbar() {
                         </Link>
                         {location &&
 
-                            <div className='cursor-pointer' onClick={handleClickFlag}>
+                            <div className='cursor-pointer'>
                                 <ReactCountryFlag
                                     svg
                                     countryCode={location.country_code}
@@ -264,7 +351,7 @@ function Navbar() {
 
 
                     <div className='flex space-x-4 items-center  '>
-                      
+
 
                         <div >
                             <button className='p-1 pl-2 pr-2 border-2 border-black  rounded-l'>
@@ -283,14 +370,14 @@ function Navbar() {
 
 
 
-                <div className='w-full bg-gray-800  items-center justify-around   flex mb-2 shadow-lg'>
+                <div className='w-full bg-orange-200  items-center justify-around   flex mb-2 shadow-lg'>
                     {navigation.map(item => {
 
                         return (
                             <Link href={item.href} key={item.name}>
 
                                 <a>
-                                    <p key={item.name} className='text-xl font-semibold cursor-pointer p-1 text-white hover:text-yellow-400'>{item.name}</p>
+                                    <p key={item.name} className='text-xl font-semibold cursor-pointer p-1  hover:text-orange-800'>{item.name}</p>
                                 </a>
                             </Link>
                         )
