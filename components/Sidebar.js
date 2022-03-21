@@ -231,7 +231,7 @@ function Sidebar() {
 
         {categories.map(category => {
           return (
-            <Link key={category.category_title} href={`/category/${category.href}-page1`}>
+            <Link key={category.category_title} href={`/category/${category.href}`}>
               <a >
                 <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{category.category_title}</p>
               </a>
@@ -245,7 +245,7 @@ function Sidebar() {
         <p className="w-56 text-lg   text-md  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">हाल के पोस्ट
         </p>
 
-        {recentStories.map(story => {
+        {/* {recentStories.map(story => {
           return (
             <Link key={story.name} href={`/category/${story.href}`}>
               <a >
@@ -253,7 +253,7 @@ function Sidebar() {
               </a>
             </Link>
           )
-        })}
+        })} */}
 
       </div>
 
@@ -261,7 +261,7 @@ function Sidebar() {
         <p className="w-56  text-lg  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">पुरालेख
         </p>
 
-        {storiesBydate.map(story => {
+        {/* {storiesBydate.map(story => {
           return (
             <Link key={story.name} href={`/category/${story.href}`}>
               <a >
@@ -269,7 +269,7 @@ function Sidebar() {
               </a>
             </Link>
           )
-        })}
+        })} */}
 
       </div>
     </div>

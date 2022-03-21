@@ -85,12 +85,12 @@ export default function Home() {
           {/* PAGINATION */}
           <div className='flex justify-center items-center flex-wrap'>
 
-            <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL - 1); scrollTop() }} className={`${currentPageNumberURL === 1 ? "hidden" : ""}  text-sm sm:text-med border-2 sm:mx-4 border-gray-500 rounded bg-red-500 p-1 m-1 text-white hover:bg-red-700`}>Previous</button>
+            <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL - 1); scrollTop() }} className={`${currentPageNumberURL === 1 ? "hidden" : ""}  text-sm sm:text-med border-2 sm:mx-4 border-gray-500 rounded bg-orange-300 p-1 m-1 text-black  hover:bg-orange-500`}>Previous</button>
 
             {pages.map((pagenumber, index) => {
 
               return (
-                <p key={pagenumber} onClick={() => { setcurrentPageNumberURL(pagenumber); scrollTop() }} className={`${pagenumber === currentPageNumberURL ? "bg-yellow-200 px-3" : "px-1"}  sm:p-2 ml-1  border-2 border-red-600 mb-1 hover:bg-red-200 rounded cursor-pointer `} >
+                <p key={pagenumber} onClick={() => { setcurrentPageNumberURL(pagenumber); scrollTop() }} className={`${pagenumber === currentPageNumberURL ? "bg-orange-200 px-3" : "px-1"}  sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded cursor-pointer `} >
                   {pagenumber}
                 </p>
 
@@ -98,7 +98,7 @@ export default function Home() {
             })}
 
 
-            <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL + 1); scrollTop() }} className={`${currentPageNumberURL === parseInt(pages[pages.length - 2]) ? "hidden" : ""}  text-sm sm:text-med ml-1 border-2 sm:mx-4  border-gray-500 rounded bg-red-500 p-4 pt-1 pb-1 text-white hover:bg-red-700`}>Next</button>
+            <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL + 1); scrollTop() }} className={`${currentPageNumberURL === parseInt(pages[pages.length - 2]) ? "hidden" : ""}  text-sm sm:text-med ml-1 border-2 sm:mx-4  border-gray-500 rounded bg-orange-300  m-1 text-black hover:bg-orange-500 p-4 pt-1 pb-1 `}>Next</button>
 
           </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import cheerio from 'cheerio';
 import extractUrls from "extract-urls";
 import fetchdata from 'node-fetch';
-import Stories from '../../components/Stories';
+import Stories from '../../../../components/Stories';
 import { useRouter } from 'next/router'
 
 
@@ -32,7 +32,7 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
                     if (page.includes('Page')) {
                         return (
                             <p key={page} onClick={() => {
-                                router.push(`/category/${CategoryHref}-page${page.substring(page.indexOf('Page') + 4, page.length)}`)
+                                router.push(`/category/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
 
                             }}
                                 className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
@@ -44,9 +44,9 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
                         return (
                             <p onClick={() => {
                                 if (page.includes('Next')) {
-                                    router.push(`/category/${CategoryHref}-page${currentPage + 1}`)
+                                    router.push(`/category/${CategoryHref}/page/${currentPage + 1}`)
                                 } else {
-                                    router.push(`/category/${CategoryHref}-page${currentPage - 1}`)
+                                    router.push(`/category/${CategoryHref}/page/${currentPage - 1}`)
                                 }
 
                             }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
@@ -61,6 +61,7 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
             </div>
 
 
+
         </div>
     )
 }
@@ -71,10 +72,9 @@ export default Category
 export async function getServerSideProps(context) {
 
 
-    const { category } = context.query
+    const { category ,page } = context.query
 
-    const Category = category.substring(0, category.indexOf('-page'))
-    const Page = category.substring(category.indexOf('-page') + 5, category.length)
+   
 
     var finalDataArray = []
     var categoryTitle = ''
@@ -200,7 +200,7 @@ export async function getServerSideProps(context) {
     }
 
 
-    await scrape(`https://www.freesexkahani.com/category/${Category}/page/${Page}`)
+    await scrape(`https://www.freesexkahani.com/category/${category}/page/${page}`)
 
 
     return {
@@ -209,8 +209,8 @@ export async function getServerSideProps(context) {
             categoryTitle: categoryTitle,
             categoryDescription: categoryDescription,
             pagination_nav_pages: pagination_nav_pages,
-            currentPage: parseInt(Page),
-            CategoryHref: Category
+            currentPage: parseInt(page),
+            CategoryHref: category
         }
     }
 

@@ -7,17 +7,19 @@ import videosContext from '../../../context/videos/videosContext';
 import { useContext, useEffect } from 'react';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 import {
     XIcon
 } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
-
+import Link from 'next/link'
 function Album({ dload_links }) {
 
     const context = useContext(videosContext);
     const { setdisclaimerShow, } = context;
+
+    const [showBigImage, setshowBigImage] = useState(false)
+    const [BigImageURL, setBigImageURL] = useState('')
 
     const router = useRouter();
     const { album } = router.query;
@@ -44,21 +46,14 @@ function Album({ dload_links }) {
         }
     }, [])
 
-    const openCarousel = (index) => {
-        if (window.innerWidth < 600) {
-        }
-        setCarauselShow('flex')
-        setselectedItem(index)
-    }
 
 
-    const [CarauselShow, setCarauselShow] = useState("hidden")
-    const [selectedItem, setselectedItem] = useState(0)
+
     const displaypics = dload_links.map((picData, index) => {
 
         return (
             <>
-                <div onClick={() => { openCarousel(index) }} key={picData} className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
+                <div key={picData} onClick={() => { setBigImageURL(picData); setshowBigImage(true) }} className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
                     <img
                         loading="lazy"
                         alt={"loading"}
@@ -66,7 +61,6 @@ function Album({ dload_links }) {
                         height={1080}
                         width={1920}
                     ></img>
-
                 </div>
 
 
@@ -80,27 +74,34 @@ function Album({ dload_links }) {
 
         <>
             <Head>
-                <title>{album.replace(/-/g," ")}</title>
+                <title>{album.replace(/-/g, " ")}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
             </Head>
             {/* <BannerAds /> */}
             {/* <Outstreams /> */}
-            <p className={`${CarauselShow === "hidden" ? "" : "hidden"} font-semibold text-md sm:text-lg md:text-2xl text-center p-1`}>{title}</p>
 
-            <div className={`grid grid-cols-2 p-1 sm:grid-cols-1 gap-x-1  md:grid-cols-3 lg:grid-cols-4 space-x-2 space-y-4 ${CarauselShow === "hidden" ? "" : "hidden"} `}>
+            <div className='flex flex-col'>
 
-                {displaypics}
 
-            </div>
+                <p className={` font-semibold text-md sm:text-lg md:text-2xl text-center p-1 mx-4`}>{title}</p>
 
-            <div className={`${CarauselShow} relative sm:hidden`}>
-                <Carousel emulateTouch={true} infiniteLoop={true} selectedItem={selectedItem}>
+                <div className={`${!showBigImage ? "" : "hidden"} grid grid-cols-2 p-1 sm:grid-cols-1 gap-x-1  md:grid-cols-3 lg:grid-cols-4 space-x-2 space-y-4  `}>
+
                     {displaypics}
-                </Carousel>
 
-                <XIcon onClick={() => { setCarauselShow("hidden") }} className='h-10 w-10 absolute top-0 right-0 left-100 bg-red-500 rounded-full m-2 z-10' />
+                </div>
+                <div onClick={() => { setshowBigImage(false) }} className={`${showBigImage ? "" : "hidden"}`}>
+                    <img
+                        className='object-contain h-fit mx-auto'
+                        loading="lazy"
+                        alt={"loading"}
+                        src={BigImageURL}
+                    ></img>
+                </div>
+
             </div>
+
 
 
         </>

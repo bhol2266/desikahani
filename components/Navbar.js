@@ -24,7 +24,7 @@ import Link from 'next/link';
 
 var navigation = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Leaked Pictures', href: '/pics/1', current: false },
+    { name: 'Leaked Pictures', href: '/pics', current: false },
     { name: 'Community', href: '#', current: false },
     { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
     { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
@@ -272,7 +272,7 @@ function Navbar() {
                                 return (
                                     <Menu.Item key={item.category_title}  >
                                         {({ active }) => (
-                                            <p onClick={() => { router.push(`/category/${item.href}-page1`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
+                                            <p onClick={() => { router.push(`/category/${item.href}`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
                                             >
                                                 {item.category_title}
                                             </p>
@@ -290,7 +290,7 @@ function Navbar() {
                     </Transition>
                 </Menu>
 
-                <Link href='/pics/1'>
+                <Link href='/pics'>
                     <a >
                         <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
                     </a>

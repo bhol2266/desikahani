@@ -13,6 +13,7 @@ function StoryThumbnail({ story_details }) {
     const router = useRouter()
 
     const onClickHandler = () => {
+
         router.push({
             pathname: `/story/${story_details.Title}`,
             query: { link: story_details.href }

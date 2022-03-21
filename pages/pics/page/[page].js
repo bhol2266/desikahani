@@ -6,10 +6,10 @@ import extractUrls from "extract-urls";
 import { useRouter } from "next/router";
 import fetchdata from 'node-fetch';
 import { useContext, useEffect } from 'react';
-import BannerAds from "../../components/Ads/BannerAds";
-import Outstreams from "../../components/Ads/Outstream";
-import PicsThumbnail from "../../components/PicsThumbnail";
-import videosContext from '../../context/videos/videosContext';
+import BannerAds from "../../../components/Ads/BannerAds";
+import Outstreams from "../../../components/Ads/Outstream";
+import PicsThumbnail from "../../../components/PicsThumbnail";
+import videosContext from '../../../context/videos/videosContext';
 import Link from 'next/link'
 import Head from 'next/head'
 
@@ -19,10 +19,10 @@ function Pics({ dload_links }) {
     const context = useContext(videosContext);
     const { setdisclaimerShow, } = context;
     const router = useRouter();
-    var { pageNum } = router.query
+    var { page } = router.query
 
-    var nextPageNumber = +pageNum + 1;
-    var previousPageNumber = +pageNum - 1;
+    var nextPageNumber = +page + 1;
+    var previousPageNumber = +page - 1;
 
 
 
@@ -66,15 +66,15 @@ function Pics({ dload_links }) {
             </div>
 
             <div className="flex items-center justify-center w-fit mx-auto p-1  space-x-3 mt-4 mb-4 ">
-                <Link href={`/pics/${previousPageNumber}`}>
-                    <a href={`/pics/${previousPageNumber}`}>
-                        <ArrowLeftIcon className={`${pageNum == 1 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
+                <Link href={`/pics/page/${previousPageNumber}`}>
+                    <a>
+                        <ArrowLeftIcon className={`${page == 1 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
                     </a>
                 </Link>
 
-                <Link href={`/pics/${nextPageNumber}`}>
+                <Link href={`/pics/page/${nextPageNumber}`}>
                     <a >
-                        <ArrowRightIcon className={`${pageNum == 60 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
+                        <ArrowRightIcon className={`${page == 60 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
 
                     </a>
                 </Link>
@@ -92,10 +92,22 @@ function Pics({ dload_links }) {
 export default Pics
 
 
+// export async function getStaticPaths() {
+//     return {
+//         paths: [
+//             { params: { page: '1' } },
+//             { params: { page: '2' } },
+//             { params: { page: '3' } },
+          
+//         ],
+//         fallback: true // false or 'blocking'
+//     };
+// }
+
 
 export async function getServerSideProps(context) {
 
-    const { pageNum } = context.query;
+    const { page } = context.params;
     var dataObject = []
 
 
@@ -177,8 +189,8 @@ export async function getServerSideProps(context) {
 
     }
 
-    await scrape(`https://hotdesipics.co/main/page/${pageNum}/`)
-    console.log(`https://hotdesipics.co/main/page/${pageNum}/`);
+    await scrape(`https://hotdesipics.co/main/page/${page}/`)
+    console.log(`https://hotdesipics.co/main/page/${page}/`);
 
 
     return {

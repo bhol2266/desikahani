@@ -25,6 +25,9 @@ function Story({ story_details }) {
         setfontSize(sizeCode)
     }
 
+ 
+    
+
     return (
         <div className="md:w-3/5 p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
             <Head>
