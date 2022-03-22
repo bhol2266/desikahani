@@ -29,16 +29,6 @@ function Pics({ dload_links }) {
 
 
 
-    useEffect(() => {
-
-
-        if (localStorage.getItem("disclaimerShow") === "false") {
-            console.log(localStorage.getItem("disclaimerShow"));
-            setdisclaimerShow(false)
-        }
-    }, [])
-
-
 
     const displaypics = dload_links.map(picData => {
 
@@ -92,20 +82,19 @@ function Pics({ dload_links }) {
 export default Pics
 
 
-// export async function getStaticPaths() {
-//     return {
-//         paths: [
-//             { params: { page: '1' } },
-//             { params: { page: '2' } },
-//             { params: { page: '3' } },
-          
-//         ],
-//         fallback: true // false or 'blocking'
-//     };
-// }
+export async function getStaticPaths() {
+    var arrayPaths = []
+    for (let index = 1; index <= 50; index++) {
+        arrayPaths.push({ params: { page: index.toString() } })
+    }
+    return {
 
+        paths: arrayPaths,
+        fallback: false // false or 'blocking'
+    };
+}
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
     const { page } = context.params;
     var dataObject = []
@@ -187,10 +176,13 @@ export async function getServerSideProps(context) {
             })
         }
 
+
+
     }
 
+  
     await scrape(`https://hotdesipics.co/main/page/${page}/`)
-    console.log(`https://hotdesipics.co/main/page/${page}/`);
+    // console.log(`https://hotdesipics.co/main/page/${page}/`);
 
 
     return {

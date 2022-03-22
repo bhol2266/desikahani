@@ -30,17 +30,6 @@ function Pics({ dload_links }) {
 
 
 
-    useEffect(() => {
-
-
-        if (localStorage.getItem("disclaimerShow") === "false") {
-            console.log(localStorage.getItem("disclaimerShow"));
-            setdisclaimerShow(false)
-        }
-    }, [])
-
-
-
     const displaypics = dload_links.map(picData => {
 
         return (
@@ -94,7 +83,7 @@ export default Pics
 
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
     var dataObject = []
     const pageNum = '1'

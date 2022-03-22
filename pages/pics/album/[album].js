@@ -35,18 +35,6 @@ function Album({ dload_links }) {
     }
 
 
-    useEffect(() => {
-
-
-
-
-        if (localStorage.getItem("disclaimerShow") === "false") {
-            console.log(localStorage.getItem("disclaimerShow"));
-            setdisclaimerShow(false)
-        }
-    }, [])
-
-
 
 
     const displaypics = dload_links.map((picData, index) => {
@@ -111,6 +99,23 @@ function Album({ dload_links }) {
 
 export default Album
 
+export async function getStaticPaths() {
+
+    var pathsArray = []
+    for (let index = 1; index <= 50; index++) {
+
+        var pics = require(`../../../JsonData/pics/page${index}.json`)
+        pics.map(pic => {
+            pathsArray.push({ params: { album: pic.substring(pic.indexOf(".co/") + 4, pic.length-1) } }
+            )
+        })
+
+    }
+    return {
+        paths: pathsArray,
+        fallback: false // false or 'blocking'
+    };
+}
 
 
 
@@ -121,9 +126,9 @@ export default Album
 
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
-    const { album } = context.query;
+    const { album } = context.params;
     var dataArray = []
 
 
