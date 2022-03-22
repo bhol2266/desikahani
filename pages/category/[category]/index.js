@@ -67,13 +67,98 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
 
 export default Index
 
+export async function getStaticPaths() {
+    const categories = [
 
-export async function getServerSideProps(context) {
+        {
+            category_title: 'Aunty Sex Story',
+            href: 'aunty-sex'
+        },
+
+        {
+            category_title: 'Bhabhi Sex',
+            href: 'bhabhi-sex'
+        },
+        {
+            category_title: 'Desi Kahani',
+            href: 'desi-kahani'
+        },
+
+        {
+            category_title: 'Family Sex Stories',
+            href: 'family-sex-stories'
+        },
+        {
+            category_title: 'First Time Sex',
+            href: 'first-time-sex'
+        },
+        {
+            category_title: 'Gay Sex Stories In Hindi',
+            href: 'gay-sex-story-hindi'
+        },
+        {
+            category_title: 'Group Sex Stories',
+            href: 'group-sex-stories'
+        },
+        {
+            category_title: 'Indian Sex Stories',
+            href: 'indian-sex-stories'
+        },
+        {
+            category_title: 'Sali Sex',
+            href: 'sali-sex'
+        },
+        {
+            category_title: 'Teacher Sex',
+            href: 'teacher-sex'
+        },
+        {
+            category_title: 'Teenage Girl',
+            href: 'teenage-girl'
+        },
+        {
+            category_title: 'XXX Kahani',
+            href: 'xxx-kahani'
+        },
+        {
+            category_title: 'अन्तर्वासना',
+            href: 'antarvasna'
+        },
+        {
+            category_title: 'हिंदी सेक्स स्टोरीज',
+            href: 'hindi-sex-stories'
+        },
 
 
-    const { category } = context.query
 
-   
+
+
+
+
+
+
+
+    ]
+
+    var arrayPaths=[]
+
+    for (let index = 0; index < categories.length; index++) {
+        arrayPaths.push({ params: { category: categories[index].href } })
+    }
+    return {
+
+        paths: arrayPaths,
+        fallback: false // false or 'blocking'
+    };
+}
+
+
+export async function getStaticProps(context) {
+
+
+    const { category } = context.params
+
+
 
     var finalDataArray = []
     var categoryTitle = ''
@@ -209,7 +294,7 @@ export async function getServerSideProps(context) {
             categoryDescription: categoryDescription,
             pagination_nav_pages: pagination_nav_pages,
             CategoryHref: category,
-            currentPage:1
+            currentPage: 1
         }
     }
 
