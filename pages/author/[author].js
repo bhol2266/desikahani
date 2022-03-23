@@ -1,25 +1,25 @@
 import React from 'react'
 import cheerio from 'cheerio';
-import extractUrls from "extract-urls";
 import fetchdata from 'node-fetch';
-import Stories from '../../../components/Stories';
+import Stories from '../../components/Stories';
 import { useRouter } from 'next/router'
 
 
-function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
+function Author({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, }) {
 
     const router = useRouter()
 
     return (
         <div>
-            <p className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`Category :${categoryTitle}`}</p>
+            <p className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`
+लेखक :${categoryTitle}`}</p>
             <p className='text-lg font-medium m-2 mx-4 md:text-xl '>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : 1`}</p>
             <Stories stories={finalDataArray} />
 
 
             {/* PAGINATION */}
-            <div className='flex justify-center items-center flex-wrap text-black'>
+            {/* <div className='flex justify-center items-center flex-wrap text-black'>
                 {pagination_nav_pages.map(page => {
 
                     if (page.includes('…')) {
@@ -32,11 +32,11 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                     if (page.includes('Page')) {
                         return (
                             <p key={page} onClick={() => {
-                                router.push(`/category/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
+                                router.push(`/author/${CategoryHref}/page/${page.substring(page.AuthorOf('Page') + 4, page.length)}`)
 
                             }}
-                                className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
-                                {page.substring(page.indexOf('Page') + 4, page.length)}
+                                className={`${currentPage === parseInt(page.substring(page.AuthorOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
+                                {page.substring(page.AuthorOf('Page') + 4, page.length)}
                             </p>
                         )
                     }
@@ -44,9 +44,9 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                         return (
                             <p onClick={() => {
                                 if (page.includes('Next')) {
-                                    router.push(`/category/${CategoryHref}/page/${currentPage + 1}`)
+                                    router.push(`/author/${CategoryHref}/page/${currentPage + 1}`)
                                 } else {
-                                    router.push(`/category/${CategoryHref}/page/${currentPage - 1}`)
+                                    router.push(`/author/${CategoryHref}/page/${currentPage - 1}`)
                                 }
 
                             }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
@@ -58,105 +58,21 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                 })}
 
 
-            </div>
+            </div> */}
 
 
         </div>
     )
 }
 
-export default Index
-
-export async function getStaticPaths() {
-    const categories = [
-
-        {
-            category_title: 'Aunty Sex Story',
-            href: 'aunty-sex'
-        },
-
-        {
-            category_title: 'Bhabhi Sex',
-            href: 'bhabhi-sex'
-        },
-        {
-            category_title: 'Desi Kahani',
-            href: 'desi-kahani'
-        },
-
-        {
-            category_title: 'Family Sex Stories',
-            href: 'family-sex-stories'
-        },
-        {
-            category_title: 'First Time Sex',
-            href: 'first-time-sex'
-        },
-        {
-            category_title: 'Gay Sex Stories In Hindi',
-            href: 'gay-sex-story-hindi'
-        },
-        {
-            category_title: 'Group Sex Stories',
-            href: 'group-sex-stories'
-        },
-        {
-            category_title: 'Indian Sex Stories',
-            href: 'indian-sex-stories'
-        },
-        {
-            category_title: 'Sali Sex',
-            href: 'sali-sex'
-        },
-        {
-            category_title: 'Teacher Sex',
-            href: 'teacher-sex'
-        },
-        {
-            category_title: 'Teenage Girl',
-            href: 'teenage-girl'
-        },
-        {
-            category_title: 'XXX Kahani',
-            href: 'xxx-kahani'
-        },
-        {
-            category_title: 'अन्तर्वासना',
-            href: 'antarvasna'
-        },
-        {
-            category_title: 'हिंदी सेक्स स्टोरीज',
-            href: 'hindi-sex-stories'
-        },
+export default Author
 
 
 
+export async function getServerSideProps(context) {
 
 
-
-
-
-
-
-    ]
-
-    var arrayPaths = []
-
-    for (let index = 0; index < categories.length; index++) {
-        arrayPaths.push({ params: { category: categories[index].href } })
-    }
-    return {
-
-        paths: arrayPaths,
-        fallback: false // false or 'blocking'
-    };
-}
-
-
-export async function getStaticProps(context) {
-
-
-    const { category } = context.params
+    const { author } = context.params
 
 
 
@@ -207,8 +123,8 @@ export async function getStaticProps(context) {
             authorHref.push(data)
         })
 
-        for (let index = 0; index < authorName.length; index++) {
-            authorArray.push({ name: authorName[index], href: authorHref[index] })
+        for (let Author = 0; Author < authorName.length; Author++) {
+            authorArray.push({ name: authorName[Author], href: authorHref[Author] })
         }
 
 
@@ -236,17 +152,17 @@ export async function getStaticProps(context) {
         $('.tags-links').each((i, el) => {
 
             var array = []
-
+        
             const select = cheerio.load(el)
             select('a').each((i, el) => {
-                const data = $(el).text()
-                const href = $(el).attr('href')
-                array.push({ name: data, href: href })
-
+              const data = $(el).text()
+              const href = $(el).attr('href')
+              array.push({ name: data, href: href })
+        
             })
             tagsArray.push(array)
-
-        })
+        
+          })
 
         $('.page-title').each((i, el) => {
 
@@ -269,19 +185,19 @@ export async function getStaticProps(context) {
             pagination_nav_pages.push(data)
         })
 
+    
 
 
-
-        for (let index = 0; index < TitleArray.length; index++) {
+        for (let Author = 0; Author < TitleArray.length; Author++) {
 
             finalDataArray.push({
-                Title: TitleArray[index],
-                author: authorArray[index],
-                date: dateArray[index],
-                views: viewsArray[index],
-                description: descriptionArray[index] ? descriptionArray[index] : "",
-                href: hrefArray[index],
-                tags: tagsArray[index],
+                Title: TitleArray[Author],
+                author: authorArray[Author],
+                date: dateArray[Author],
+                views: viewsArray[Author],
+                description: descriptionArray[Author] ? descriptionArray[Author] : "",
+                href: hrefArray[Author],
+                tags: tagsArray[Author],
 
             })
         }
@@ -289,7 +205,7 @@ export async function getStaticProps(context) {
     }
 
 
-    await scrape(`https://www.freesexkahani.com/category/${category}/page/1`)
+    await scrape(`https://www.freesexkahani.com/author/${author}`)
 
 
     return {
@@ -298,7 +214,6 @@ export async function getStaticProps(context) {
             categoryTitle: categoryTitle,
             categoryDescription: categoryDescription,
             pagination_nav_pages: pagination_nav_pages,
-            CategoryHref: category,
             currentPage: 1
         }
     }

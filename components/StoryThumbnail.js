@@ -23,12 +23,12 @@ function StoryThumbnail({ story_details }) {
 
     return (
         <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
-            <p onClick={onClickHandler}  className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
+            <p onClick={onClickHandler} className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
             <div className='flex items-center text-sm  my-2 space-x-2'>
 
                 <div className='flex  items-center '>
                     <PencilAltIcon className='icon text-brown-400' />
-                    <p className='font-semibold text-gray-600' >{story_details.author}</p>
+                    <p onClick={() => { router.push(`/author/${story_details.author.href.substring(story_details.author.href.indexOf('author/') + 7, story_details.author.href.length - 1)}`) }} className='cursor-pointer underline hover:text-red-500 font-semibold text-gray-600' >{story_details.author.name}</p>
                 </div>
                 <p className='font-semibold text-gray-600'>{story_details.date}</p>
 
@@ -49,8 +49,7 @@ function StoryThumbnail({ story_details }) {
 
                 {story_details.tags.map(tag => {
                     return (
-
-                        <p onClick={onClickHandler} className='hover:text-red-800 cursor-pointer bg-yellow-100 border-2 rounded text-xs m-1 border-gray-500 hover:bg-yellow-200 ' key={tag}>{tag}</p>
+                        <p onClick={() => { router.push(`/tag/${tag.href.substring(tag.href.indexOf('tag/') + 4, tag.href.length - 1)}`) }} className='hover:text-red-800 cursor-pointer bg-yellow-100 border-2 rounded text-xs m-1 border-gray-500 hover:bg-yellow-200 ' key={tag.name}>{tag.name}</p>
                     )
                 })}
             </div>

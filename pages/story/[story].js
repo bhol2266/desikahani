@@ -1,10 +1,10 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 import cheerio from 'cheerio';
 import extractUrls from "extract-urls";
 import fetchdata from 'node-fetch';
 import Head from 'next/head'
 import { Fragment, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 
 import {
@@ -16,6 +16,7 @@ import { Menu, Transition } from '@headlessui/react'
 
 function Story({ story_details }) {
 
+    const router = useRouter()
 
     const [fontSize, setfontSize] = useState('lg')
 
@@ -25,8 +26,8 @@ function Story({ story_details }) {
         setfontSize(sizeCode)
     }
 
- 
-    
+
+
 
     return (
         <div className="md:w-3/5 p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
@@ -82,7 +83,7 @@ function Story({ story_details }) {
 
                 <div className='flex  items-center '>
                     <PencilAltIcon className='icon text-red-500' />
-                    <p className='font-semibold text-gray-600' >{story_details.author}</p>
+                    <p onClick={() => { router.push(`/author/${story_details.author.href.substring(story_details.author.href.indexOf('author/') + 7, story_details.author.href.length - 1)}`) }} className='cursor-pointer underline hover:text-red-500 font-semibold text-gray-600' >{story_details.author.name}</p>
                 </div>
                 <p className='font-semibold text-gray-600'>{story_details.date}</p>
 
@@ -178,7 +179,7 @@ export async function getServerSideProps(context) {
 
 
         var Title = ''
-        var author = ''
+        var author = {}
         var date = ''
         var views = ''
         var description = []
@@ -204,11 +205,21 @@ export async function getServerSideProps(context) {
             Title = data
 
         })
+        //Author name and link
+     
         $('.author-name').each((i, el) => {
+            const authorName = $(el).text()
 
-            const data = $(el).text()
-            author = data
+            $('.url.fn.n').each((i, el) => {
+                const authorHref = $(el).attr('href')
+                author = { name: authorName, href: authorHref }
+            })
+
         })
+
+
+
+
 
 
         $('.posted-on time').each((i, el) => {
