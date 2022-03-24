@@ -12,6 +12,7 @@ import PicsThumbnail from "../../components/PicsThumbnail";
 import videosContext from '../../context/videos/videosContext';
 import Link from 'next/link'
 import Head from 'next/head'
+import Head from 'next/head'
 
 
 function Pics({ dload_links }) {

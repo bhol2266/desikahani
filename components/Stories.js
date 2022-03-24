@@ -1,4 +1,3 @@
-import VideoThumbnail from "./VideoThumbnail"
 import { useState, useRef } from "react";
 import ReactPaginate from "react-paginate";
 import { useContext, useEffect } from 'react'

@@ -4,6 +4,7 @@ import extractUrls from "extract-urls";
 import fetchdata from 'node-fetch';
 import Stories from '../../../components/Stories';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
 function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {

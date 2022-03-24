@@ -27,6 +27,15 @@ function Story({ story_details }) {
     }
 
 
+    const onClickHandler = (href, title) => {
+
+        router.push({
+            pathname: `/story/${title}`,
+            query: { link: href }
+        })
+    }
+
+
 
 
     return (
@@ -134,13 +143,16 @@ function Story({ story_details }) {
                 <div className='my-2'>
                     {story_details.storiesLink_insideParagrapgh.map(item => {
                         return (
-                            <div key={item.href} className='flex'>
+                            <div key={item.name} className='flex'>
                                 <ChevronRightIcon className='icon' />
-                                <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                <p onClick={() => { onClickHandler(item.href, item.title) }} className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
                             </div>
                         )
                     })}
                 </div>
+
+
+
 
                 <p className='my-2 text-lg text-red-800 font-semibold'>ऐसी ही कुछ और कहानियाँ</p>
 
@@ -148,9 +160,9 @@ function Story({ story_details }) {
                 <div className='my-2'>
                     {story_details.relatedStoriesLinks.map(item => {
                         return (
-                            <div key={item.href} className='flex'>
+                            <div key={item.name} className='flex'>
                                 <ChevronRightIcon className='icon' />
-                                <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                <p onClick={() => { onClickHandler(item.href, item.title) }} className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
                             </div>
                         )
                     })}
@@ -172,6 +184,7 @@ export async function getServerSideProps(context) {
 
 
     const { link } = context.query
+    console.log(link);
 
     var story_details = {}
     const scrape = async (url) => {
@@ -206,7 +219,7 @@ export async function getServerSideProps(context) {
 
         })
         //Author name and link
-     
+
         $('.author-name').each((i, el) => {
             const authorName = $(el).text()
 

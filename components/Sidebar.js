@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/router'
+
 
 function Sidebar() {
+
+  const router = useRouter()
+
 
   const categories = [
 
@@ -221,6 +226,15 @@ function Sidebar() {
     }
   ]
 
+  const onClickHandler = (href, title) => {
+
+    router.push({
+      pathname: `/story/${title}`,
+      query: { link: href }
+    })
+  }
+
+
   return (
 
     <div className='mx-6 pt-1 hidden md:flex md:flex-col'>
@@ -245,15 +259,13 @@ function Sidebar() {
         <p className="w-56 text-lg   text-md  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">हाल के पोस्ट
         </p>
 
-        {/* {recentStories.map(story => {
+        {recentStories.map(story => {
           return (
-            <Link key={story.name} href={`/category/${story.href}`}>
-              <a >
-                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
-              </a>
-            </Link>
+
+            <p key={story.name} onClick={() => { onClickHandler(story.href, story.name) }} className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
+
           )
-        })} */}
+        })}
 
       </div>
 
@@ -261,15 +273,13 @@ function Sidebar() {
         <p className="w-56  text-lg  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">पुरालेख
         </p>
 
-        {/* {storiesBydate.map(story => {
+        {storiesBydate.map(story => {
           return (
-            <Link key={story.name} href={`/category/${story.href}`}>
-              <a >
-                <p className="w-56 font-semibold text-md border-2  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
-              </a>
-            </Link>
+
+            <p key={story.name} onClick={() => { onClickHandler(story.href, story.name) }} className="w-56 font-semibold text-md border-2  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
+
           )
-        })} */}
+        })}
 
       </div>
     </div>
