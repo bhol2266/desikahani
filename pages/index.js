@@ -64,15 +64,15 @@ export default function Home() {
   return (
     <div >
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <meta name="robots" content="max-image-preview:large, noindex,nofollow" />
-
         <title>Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ</title>
         <meta name="description"
           content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
+        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="robots" content="max-image-preview:large, noindex,nofollow" />
+
 
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
@@ -92,9 +92,9 @@ export default function Home() {
 
       <main className="flex ">
         <div>
-          <p className="text-center text-xl font-semibold rounded-lg border-2 border-gray-300 shadow-md p-2 m-1 bg-orange-100">
+          <h1 className="text-center text-xl font-semibold rounded-lg border-2 border-gray-300 shadow-md p-2 m-1 bg-orange-100">
             अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ
-          </p>
+          </h1>
 
 
           <p className='font-bold sm:text-2xl text-green-900  text-center p-1 pr-6'>{`PAGE :${currentPageNumberURL}`}</p>
