@@ -14,10 +14,16 @@ function StoryThumbnail({ story_details }) {
 
     const onClickHandler = () => {
 
-        router.push({
-            pathname: `/story/${story_details.Title}`,
-            query: { link: story_details.href }
-        })
+        const rough = story_details.href.substring(story_details.href.indexOf('.com/') + 5, story_details.href.length - 1)
+        const category = rough.substring(0, rough.indexOf('/'))
+        const title = rough.substring(rough.indexOf('/') + 1, rough.length)
+
+        // router.push({
+        //     pathname: `/${category}/${title}`,
+        //     query: { link: story_details.href }
+        // })
+
+        router.push(`/${category}/${title}`)
     }
 
 
