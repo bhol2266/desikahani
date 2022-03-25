@@ -42,10 +42,27 @@ function Pics({ dload_links }) {
         <div>
 
             <Head>
-                <title>Leaked Pictures</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <title>Indian Nude Photos | Desi Scandals</title>
+                <meta name="description"
+                    content="Yaha par aap enjoy kar sakte ho Indian girls ki nude aur sex photos alag alag category mein. Hot Girl ke nude selfies ya phir chudai ka xxx photos wives ka." />
+                <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
+
+                <meta property="og:title" content="Indian Nude Photos | Desi Scandals" />
+                <meta property="og:description"
+                    content="Yaha par aap enjoy kar sakte ho Indian girls ki nude aur sex photos alag alag category mein. Hot Girl ke nude selfies ya phir chudai ka xxx photos wives ka." />
+                <meta property="og:url" content={`https://www.desikahaniya.in/photo/${page}`} />
+                <meta property="og:site_name" content="Free Hindi Sex Stories" />
+
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Indian Nude Photos | Desi Scandals" />
+                <meta name="twitter:description"
+                    content="Yaha par aap enjoy kar sakte ho Indian girls ki nude aur sex photos alag alag category mein. Hot Girl ke nude selfies ya phir chudai ka xxx photos wives ka." />
+                <meta name="twitter:label1" content="पोस्ट" />
+                <meta name="twitter:data1" content="85" />
             </Head>
+
 
             <BannerAds />
 
@@ -56,13 +73,13 @@ function Pics({ dload_links }) {
             </div>
 
             <div className="flex items-center justify-center w-fit mx-auto p-1  space-x-3 mt-4 mb-4 ">
-                <Link href={`/pics/page/${previousPageNumber}`}>
+                <Link href={`/photo/page/${previousPageNumber}`}>
                     <a>
                         <ArrowLeftIcon className={`${page == 1 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
                     </a>
                 </Link>
 
-                <Link href={`/pics/page/${nextPageNumber}`}>
+                <Link href={`/photo/page/${nextPageNumber}`}>
                     <a >
                         <ArrowRightIcon className={`${page == 60 ? "hidden" : ""}  sm:w-16 w-12 cursor-pointer hover:bg-red-700 bg-red-500 rounded-lg  text-white`} />
 
@@ -180,7 +197,7 @@ export async function getStaticProps(context) {
 
     }
 
-  
+
     await scrape(`https://hotdesipics.co/main/page/${page}/`)
     // console.log(`https://hotdesipics.co/main/page/${page}/`);
 

@@ -11,14 +11,14 @@ function PicsThumbnail({ data }) {
     const openNextlink = () => {
         console.log(f);
 
-        router.push(`/pics/${f}`)
+        router.push(`/photo/${f}`)
     }
 
     return (
         <div>
 
             <div className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
-                <a href={`/pics/album/${nextlink}`}>
+                <a href={`/photo/${nextlink}`}>
 
                     <img
                         loading="lazy"
@@ -30,7 +30,7 @@ function PicsThumbnail({ data }) {
                     ></img>
 
 
-                    <p className='text-sm p-1 font-bold'>{data.title}</p>
+                    <h1 className='text-sm p-1 font-bold'>{data.title}</h1>
                     <p className='text-sm p-1 '>{data.dataAdded}</p>
 
                 </a>

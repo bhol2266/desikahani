@@ -68,25 +68,24 @@ export default function Home() {
         <meta name="description"
           content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
         <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        <meta name="robots" content="max-image-preview:large, noindex,nofollow" />
 
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <meta property="og:locale" content="hi_IN" />
+        <meta property="og:type" content="article" />
 
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Antarvasna" />
+        <meta property="og:title" content="Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ" />
         <meta property="og:description"
           content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
         <meta property="og:url" content="https://www.desikahaniya.in/" />
-        <meta property="og:site_name" content="Antarvasna" />
-        <meta property="og:image" content="https://www.desikahaniya.in/wp-content/uploads/2019/12/av.jpg" />
-        <meta property="og:image:width" content="480" />
-        <meta property="og:image:height" content="270" />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:site_name" content="Free Hindi Sex Stories" />
+      
+      
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@antarvasna_guru" />
+        <meta name="twitter:title" content="Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ" />
+        <meta name="twitter:description"
+          content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
+        <meta name="twitter:label1" content="पोस्ट" />
+        <meta name="twitter:data1" content="85" />
       </Head>
 
 

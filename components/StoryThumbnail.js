@@ -23,7 +23,7 @@ function StoryThumbnail({ story_details }) {
 
     return (
         <div className=" p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
-            <p onClick={onClickHandler} className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</p>
+            <h2 onClick={onClickHandler} className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</h2>
             <div className='flex items-center text-sm  my-2 space-x-2'>
 
                 <div className='flex  items-center '>

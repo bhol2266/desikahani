@@ -12,8 +12,22 @@ function Author({ finalDataArray, categoryTitle, categoryDescription, pagination
 
     return (
         <div>
-            <p className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`
-लेखक :${categoryTitle}`}</p>
+            <Head>
+                <title>{`${categoryTitle}- Free Hindi Sex Stories`} </title>
+                <meta name="description"
+                    content={`${categoryDescription}`} />
+
+                <meta property="og:locale" content="hi_IN" />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content="Desi Kahani - अन्तर्वासना हिंदी सेक्स स्टोरी"></meta>
+                <meta property="og:description" content="Sex Bhari Desi kahani Hindi me padh kar maja len. Gaon Ki ladki, bhabhi, aunty ki chut chudai, gand sex lund khada kar dengi. हिंदी में देसी सेक्स स्टोरीज."></meta>
+                <meta property="og:url" content="https://www.freesexkahani.com/category/desi-kahani/"></meta>
+
+                <meta name="twitter:description" content="Sex Bhari Desi kahani Hindi me padh kar maja len. Gaon Ki ladki, bhabhi, aunty ki chut chudai, gand sex lund khada kar dengi. हिंदी में देसी सेक्स स्टोरीज."></meta>
+            </Head>
+
+            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`
+लेखक :${categoryTitle}`}</h1>
             <p className='text-lg font-medium m-2 mx-4 md:text-xl '>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : 1`}</p>
             <Stories stories={finalDataArray} />
@@ -153,17 +167,17 @@ export async function getServerSideProps(context) {
         $('.tags-links').each((i, el) => {
 
             var array = []
-        
+
             const select = cheerio.load(el)
             select('a').each((i, el) => {
-              const data = $(el).text()
-              const href = $(el).attr('href')
-              array.push({ name: data, href: href })
-        
+                const data = $(el).text()
+                const href = $(el).attr('href')
+                array.push({ name: data, href: href })
+
             })
             tagsArray.push(array)
-        
-          })
+
+        })
 
         $('.page-title').each((i, el) => {
 
@@ -186,7 +200,7 @@ export async function getServerSideProps(context) {
             pagination_nav_pages.push(data)
         })
 
-    
+
 
 
         for (let Author = 0; Author < TitleArray.length; Author++) {

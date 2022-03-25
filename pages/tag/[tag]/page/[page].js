@@ -4,6 +4,7 @@ import extractUrls from "extract-urls";
 import fetchdata from 'node-fetch';
 import Stories from '../../../../components/Stories';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
 function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
@@ -12,7 +13,31 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
 
     return (
         <div>
-            <p className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`TAG :${categoryTitle}`}</p>
+            <Head>
+                <title>{`${categoryTitle}- Free Hindi Sex Stories`} </title>
+                <meta name="description"
+                    content={`${categoryDescription}`} />
+
+
+                <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+                <meta property="og:locale" content="hi_IN" />
+                <meta property="og:type" content="article" />
+
+                <meta property="og:title" content={`${categoryTitle}- Free Hindi Sex Stories`} />
+                <meta property="og:description"
+                    content={`${categoryDescription}`} />
+                <meta property="og:url" content={`https://www.desikahaniya.in/tag/${categoryTitle}/page/${currentPage}`} />
+                <meta property="og:site_name" content="Free Hindi Sex Stories" />
+
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${categoryTitle}- Free Hindi Sex Stories`} />
+                <meta name="twitter:description"
+                    content={`${categoryDescription}`} />
+                <meta name="twitter:label1" content="पोस्ट" />
+                <meta name="twitter:data1" content="85" />
+            </Head>
+            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`Category :${categoryTitle}`}</h1>
             <p className='text-lg font-medium m-2 mx-4 md:text-xl '>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : ${currentPage}`}</p>
             <Stories stories={finalDataArray} />
