@@ -1,22 +1,17 @@
 import cheerio from 'cheerio';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import fetchdata from 'node-fetch';
 import React, { useState } from 'react';
-import BannerAds from '../../components/Ads/BannerAds';
-import Outstreams from '../../components/Ads/Outstream';
-import videosContext from '../../context/videos/videosContext';
-import { useContext, useEffect } from 'react';
-import { BeatLoader } from 'react-spinners'
-
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {
-    XIcon
-} from '@heroicons/react/solid';
-import { useRouter } from 'next/router';
-import Link from 'next/link'
-import Head from 'next/head'
-import PicsThumbnail from '../../components/PicsThumbnail'
+import { BeatLoader } from 'react-spinners';
+import PicsThumbnail from '../../components/PicsThumbnail';
+
 
 function Album({ dload_links, relatedAlbums }) {
+
+    const [showBigImage, setshowBigImage] = useState(false)
+    const [BigImageURL, setBigImageURL] = useState('')
 
     const router = useRouter();
     if (router.isFallback) {
@@ -30,12 +25,9 @@ function Album({ dload_links, relatedAlbums }) {
     const scrollTop = () => { window.scrollTo({ top: 0, behavior: 'auto' }); };
 
 
-    const context = useContext(videosContext);
-    const { setdisclaimerShow, } = context;
+  
 
-    const [showBigImage, setshowBigImage] = useState(false)
-    const [BigImageURL, setBigImageURL] = useState('')
-
+ 
     const { photoAlbum } = router.query;
 
     var title;
@@ -121,7 +113,7 @@ function Album({ dload_links, relatedAlbums }) {
                 </div>
                 <div onClick={() => { setshowBigImage(false) }} className={`${showBigImage ? "" : "hidden"}`}>
                     <img
-                        className='object-contain h- mx-auto'
+                        className={`object-contain h-4/5 mx-auto`}
                         loading="lazy"
                         alt={"loading"}
                         src={BigImageURL}
@@ -216,13 +208,6 @@ export async function getStaticProps(context) {
 
             const links = $(el).attr("data-lazy-src")
             thumbnailArray.push(links)
-            console.log(links);
-            // try {
-            //     let urls = extractUrls(links);
-            //     thumbnailArray.push(urls[0].trim())
-            // } catch (error) {
-            //     errorIndex.push(i)
-            // }
 
         })
 
