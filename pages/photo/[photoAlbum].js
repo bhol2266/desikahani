@@ -5,6 +5,7 @@ import BannerAds from '../../components/Ads/BannerAds';
 import Outstreams from '../../components/Ads/Outstream';
 import videosContext from '../../context/videos/videosContext';
 import { useContext, useEffect } from 'react';
+import { BeatLoader } from 'react-spinners'
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
@@ -13,8 +14,21 @@ import {
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 import Head from 'next/head'
+import PicsThumbnail from '../../components/PicsThumbnail'
 
-function Album({ dload_links }) {
+function Album({ dload_links, relatedAlbums }) {
+
+    const router = useRouter();
+    if (router.isFallback) {
+        return (
+            <div className="flex justify-center mx-auto mt-10 ">
+                <BeatLoader loading size={25} color={'red'} />
+            </div>
+        )
+    }
+
+    const scrollTop = () => { window.scrollTo({ top: 0, behavior: 'auto' }); };
+
 
     const context = useContext(videosContext);
     const { setdisclaimerShow, } = context;
@@ -22,7 +36,6 @@ function Album({ dload_links }) {
     const [showBigImage, setshowBigImage] = useState(false)
     const [BigImageURL, setBigImageURL] = useState('')
 
-    const router = useRouter();
     const { photoAlbum } = router.query;
 
     var title;
@@ -35,14 +48,20 @@ function Album({ dload_links }) {
         }
     }
 
+    const relatedPics = relatedAlbums.map(picData => {
 
+        return (
+            <PicsThumbnail key={picData.thumbnailUrl} data={picData} />
+
+        )
+    })
 
 
     const displaypics = dload_links.map((picData, index) => {
 
         return (
             <>
-                <div key={picData} onClick={() => { setBigImageURL(picData); setshowBigImage(true) }} className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
+                <div key={picData} onClick={() => { setBigImageURL(picData); setshowBigImage(true); scrollTop() }} className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
                     <img
                         loading="lazy"
                         alt={"loading"}
@@ -51,6 +70,7 @@ function Album({ dload_links }) {
                         width={1920}
                     ></img>
                 </div>
+
 
 
 
@@ -96,19 +116,27 @@ function Album({ dload_links }) {
 
                 <div className={`${!showBigImage ? "" : "hidden"} grid grid-cols-2 p-1 sm:grid-cols-1 gap-x-1  md:grid-cols-3 lg:grid-cols-4 space-x-2 space-y-4  `}>
 
-                {displaypics}
+                    {displaypics}
+
+                </div>
+                <div onClick={() => { setshowBigImage(false) }} className={`${showBigImage ? "" : "hidden"}`}>
+                    <img
+                        className='object-contain h- mx-auto'
+                        loading="lazy"
+                        alt={"loading"}
+                        src={BigImageURL}
+                    ></img>
+                </div>
+
+
+                <div className={`${!showBigImage ? "" : "hidden"}`}>
+                    <h2 className='m-1 text-2xl border-2 font-semibold border-gray-400 text-center mt-6 rounded'>Related Photos</h2>
+                    <div className={` grid grid-cols-2 p-1 sm:grid-cols-1 gap-x-1  md:grid-cols-3 lg:grid-cols-4 space-x-2 space-y-4`}>
+                        {relatedPics}
+                    </div>
+                </div>
 
             </div>
-            <div onClick={() => { setshowBigImage(false) }} className={`${showBigImage ? "" : "hidden"}`}>
-                <img
-                    className='object-contain h-fit mx-auto'
-                    loading="lazy"
-                    alt={"loading"}
-                    src={BigImageURL}
-                ></img>
-            </div>
-
-        </div>
 
 
 
@@ -133,7 +161,7 @@ export async function getStaticPaths() {
     }
     return {
         paths: pathsArray,
-        fallback: false // false or 'blocking'
+        fallback: true // false or 'blocking'
     };
 }
 
@@ -151,6 +179,9 @@ export async function getStaticProps(context) {
     const { photoAlbum } = context.params;
     var dataArray = []
 
+    var dataObject = []
+
+
 
 
     async function scrape() {
@@ -159,14 +190,93 @@ export async function getStaticProps(context) {
         const body = await response.text();
 
         const $ = cheerio.load(body)
+        scrape2(body)
 
-        console.log(photoAlbum)
 
         $('.gallery-item  a').each(async (i, el) => {
             const links = $(el).attr("href")
             dataArray.push(links);
 
         })
+    }
+
+
+
+    const scrape2 = async (body) => {
+
+        var thumbnailArray = []
+        var TitleArray = []
+        var DateArray = []
+        var errorIndex = []
+        var FullalbumLink = []
+
+        const $ = cheerio.load(body)
+
+        $('.entry-thumbnail img').each((i, el) => {
+
+            const links = $(el).attr("data-lazy-src")
+            thumbnailArray.push(links)
+            console.log(links);
+            // try {
+            //     let urls = extractUrls(links);
+            //     thumbnailArray.push(urls[0].trim())
+            // } catch (error) {
+            //     errorIndex.push(i)
+            // }
+
+        })
+
+
+        $('.entry-title a').each((i, el) => {
+
+            TitleArray.push($(el).text().trim());
+        })
+
+        $('.entry-date').each((i, el) => {
+
+            DateArray.push($(el).text().trim())
+
+        })
+        $('.entry-thumbnail').each((i, el) => {
+
+            FullalbumLink.push($(el).attr('href'))
+
+        })
+
+
+
+
+        if (errorIndex.length > 0) {
+            for (let index = 0; index < errorIndex.length; index++) {
+
+                delete TitleArray[errorIndex[index]]
+                delete DateArray[errorIndex[index]]
+                delete FullalbumLink[errorIndex[index]]
+
+            }
+        }
+
+
+        TitleArray = TitleArray.filter(function (element) {
+            return element !== undefined;
+        });
+        DateArray = DateArray.filter(function (element) {
+            return element !== undefined;
+        });
+        FullalbumLink = FullalbumLink.filter(function (element) {
+            return element !== undefined;
+        });
+
+
+        for (let index = 0; index < thumbnailArray.length; index++) {
+            dataObject.push({
+                thumbnailUrl: thumbnailArray[index],
+                title: TitleArray[index],
+                dataAdded: DateArray[index],
+                nextLink: FullalbumLink[index],
+            })
+        }
+
 
     }
 
@@ -175,7 +285,8 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            dload_links: dataArray
+            dload_links: dataArray,
+            relatedAlbums: dataObject
         }
     }
 }
