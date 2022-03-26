@@ -11,16 +11,24 @@ import {
     PencilAltIcon, EyeIcon, ChevronRightIcon, ScaleIcon, FolderIcon, TagIcon
 } from '@heroicons/react/solid';
 import { Menu, Transition } from '@headlessui/react'
+import { BeatLoader } from 'react-spinners';
 
 
 
 function Story({ story_details }) {
 
-    const router = useRouter()
-
-    const {story, story_Category}= router.query;
-
     const [fontSize, setfontSize] = useState('lg')
+
+    const router = useRouter();
+    if (router.isFallback) {
+        return (
+            <div className="flex justify-center mx-auto mt-10 ">
+                <BeatLoader loading size={25} color={'red'} />
+            </div>
+        )
+    }
+
+    const { story, story_Category } = router.query;
 
     const filter = [{ sizeName: 'Small', sizecode: 'sm' }, { sizeName: 'Medium', sizecode: 'md' }, { sizeName: 'Large', sizecode: 'lg' }, { sizeName: 'XL', sizecode: 'xl' }, { sizeName: '2XL', sizecode: '2xl' },]
 
@@ -46,14 +54,14 @@ function Story({ story_details }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charset="UTF-8" />
                 1
-                <title>{`${story_Category.replace('-',' ')} - ${story_details.Title}`}</title>
+                <title>{`${story_Category.replace('-', ' ')} - ${story_details.Title}`}</title>
 
                 <meta name="description"
                     content={story_details.description[0]} />
                 <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
                 <meta property="og:locale" content="hi_IN" />
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={`${story_Category.replace('-',' ')} - ${story_details.Title}`} />
+                <meta property="og:title" content={`${story_Category.replace('-', ' ')} - ${story_details.Title}`} />
                 <meta property="og:description"
                     content={story_details.description[0]} />
                 <meta property="og:url" content={`https://www.desikahaniya.in/${story_Category}/${story}`} />
@@ -70,7 +78,7 @@ function Story({ story_details }) {
                 <meta property="article:section" content={story_Category} />
                 <meta property="article:published_time" content="2022-03-25T07:07:39+05:30" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${story_Category.replace('-',' ')} - ${story_details.Title}`} />
+                <meta name="twitter:title" content={`${story_Category.replace('-', ' ')} - ${story_details.Title}`} />
                 <meta name="twitter:description"
                     content={story_details.description[0]} />
                 <meta name="twitter:label1" content="Written by" />
@@ -215,10 +223,35 @@ function Story({ story_details }) {
 export default Story
 
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+
+    var pathsArray = []
+    for (let index = 1; index <= 50; index++) {
+
+        var pics = require(`../../JsonData/pics/page${index}.json`)
+        pics.map(pic => {
+            pathsArray.push({ params: { photoAlbum: pic.substring(pic.indexOf(".co/") + 4, pic.length - 1) } }
+            )
+        })
+
+    }
+    return {
+        paths: [{
+            params: {
+                story_Category: 'teenage-girl',
+                story: 'sister-ass-fuck-story'
+            }
+        }],
+        fallback: true // false or 'blocking'
+    };
+}
 
 
-    const { story, story_Category } = context.query
+
+export async function getStaticProps(context) {
+
+
+    const { story, story_Category } = context.params
 
     var story_details = {}
     const scrape = async (url) => {
