@@ -24,13 +24,7 @@ function Footer() {
                     </Link>
 
 
-                    <Link
-                        passHref={true}
-                        href={'/faq'}
-                    >
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">FAQ</p>
-
-                    </Link>
+                
                     <Link
                         passHref={true}
                         href={'/parentalcontrol'}
@@ -67,7 +61,7 @@ function Footer() {
             </div>
 
             <div className='flex p-2 items-center justify-between  w-4/5 mx-auto'>
-                <p className='font-semibold'>© 2022 Chutlunds.live IS A FREE PORN VIDEOS</p>
+                <p className='font-semibold'>© 2022 DesiKahaniya.in IS A FREE PORN VIDEOS</p>
 
                 <div className='p-2  rounded'>
 

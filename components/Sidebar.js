@@ -247,7 +247,7 @@ function Sidebar() {
           return (
             <Link key={category.category_title} href={`/category/${category.href}`}>
               <a >
-                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{category.category_title}</p>
+                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{category.category_title}</p>
               </a>
             </Link>
           )
@@ -270,7 +270,7 @@ function Sidebar() {
           return (
             <Link key={story.name} href={`/${category}/${title}`}>
               <a >
-                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
+                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{story.name}</p>
               </a>
             </Link>
 

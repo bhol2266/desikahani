@@ -11,7 +11,6 @@ import {
 import {
     MoonIcon,
     MenuIcon,
-    SearchIcon,
     SunIcon,
     ChevronDownIcon, UserIcon
 
@@ -26,8 +25,8 @@ var navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Leaked Pictures', href: '/photo', current: false },
     { name: 'Audio Sex Story', href: `/tag/audio-sex-story`, current: false },
-    { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
-    { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
+    { name: 'Sex Videos', href: "https://www.chutlunds.live/", current: false },
+
 ]
 
 const categories = [
@@ -117,33 +116,6 @@ function Navbar() {
     }, [])
 
 
-    const enableLightMode = () => {
-        setDarkThemeFunc('light')
-    }
-
-    const enableDarkMode = () => {
-        setDarkThemeFunc('dark')
-    }
-
-
-    const [searchBarVisibility, setsearchBarVisibility] = useState('hidden');
-    const searchInputref = useRef('')
-    const handleSearchIconClick = () => {
-        if (searchBarVisibility === 'hidden') {
-            setsearchBarVisibility('flex')
-        } else {
-            setsearchBarVisibility('hidden')
-
-        }
-    }
-
-
-    const chutlundClick = () => {
-        setsearchBarVisibility('hidden')
-        searchInputref.current.value = ''
-    }
-
-
     return (
 
         <div>
@@ -156,12 +128,15 @@ function Navbar() {
                             <div className='flex  items-center justify-between'>
 
                                 <div className='flex items-center space-x-1' >
+                                    <div>
 
-                                    <Link href='/'>
-                                        <p className=' align-center text-center font-body text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6'>Desi Kahaniya</p>
-                                    </Link>
+                                        <Link href='/'>
+                                            <p className=' align-center text-center font-footer font-semibold text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6'>DesiKahaniya.in</p>
+                                        </Link>
+                                        <p className=' align-center text-center font-footer font-extralight text-xs cursor-pointer lg:text-left lg:ml-6'>अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ</p>
+                                    </div>
                                     {location &&
-                                        <div className='cursor-pointer'>
+                                        <div className=''>
                                             <ReactCountryFlag
                                                 svg
                                                 countryCode={location.country_code}
@@ -183,9 +158,7 @@ function Navbar() {
 
                                 <div className='flex items-center'>
 
-                                    <div onClick={handleSearchIconClick} className=' lg:hidden mr-2 cursor-pointer p-2  hover:bg-gray-700 hover:text-white rounded-md '>
-                                        <SearchIcon className='h-6 w-6' />
-                                    </div>
+
 
 
                                     <Disclosure.Button className="lg:hidden items-center justify-center   rounded-md text-black hover:text-white hover:bg-gray-700 p-2">
@@ -240,68 +213,82 @@ function Navbar() {
 
 
             </div>
-            <div className='flex justify-evenly items-center mb-1 bg-orange-200 shadow-lg lg:hidden '>
+            <div className='flex flex-col items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
 
-                <Link href='/'>
-                    <a >
-                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  '>Home</p>
-                    </a>
-                </Link>
+                <div className='flex items-center justify-evenly  pl-2 w-full '>
+                    <Link href='/'>
+                        <a >
+                            <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 ml-2  '>Home</p>
+                        </a>
+                    </Link>
 
-                <Menu as="div" className={` relative  text-left`}>
-                    <div className=' w-fit'>
-                        <Menu.Button className="flex items-center font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
-                            Categories
-                            <ChevronDownIcon className='h-6 pt-1 ml-1' />
-                        </Menu.Button>
+                    <Menu as="div" className={` relative  text-left`}>
+                        <div className=' w-fit'>
+                            <Menu.Button className="flex items-center font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
+                                Categories
+                                <ChevronDownIcon className='h-6 pt-1 ml-1' />
+                            </Menu.Button>
 
-                    </div>
+                        </div>
 
-                    <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                    >
-                        <Menu.Items className=" z-50 origin-top-right absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                        >
+                            <Menu.Items className=" z-50 origin-top-right absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
 
-                            {categories.map(item => {
-                                return (
-                                    <Menu.Item key={item.category_title}  >
-                                        {({ active }) => (
-                                            <p onClick={() => { router.push(`/category/${item.href}`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
-                                            >
-                                                {item.category_title}
-                                            </p>
-                                        )}
-                                    </Menu.Item>
-
-
-
-                                )
-                            })}
+                                {categories.map(item => {
+                                    return (
+                                        <Menu.Item key={item.category_title}  >
+                                            {({ active }) => (
+                                                <p onClick={() => { router.push(`/category/${item.href}`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
+                                                >
+                                                    {item.category_title}
+                                                </p>
+                                            )}
+                                        </Menu.Item>
 
 
 
-                        </Menu.Items>
-                    </Transition>
-                </Menu>
+                                    )
+                                })}
 
 
 
-                <Link href='tag/audio-sex-story'>
-                    <a >
-                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
-                    </a>
-                </Link>
-                <Link href='/photo'>
-                    <a >
-                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
-                    </a>
-                </Link>
+                            </Menu.Items>
+                        </Transition>
+                    </Menu>
+
+
+
+                    <Link href='/tag/audio-sex-story'>
+                        <a >
+                            <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
+                        </a>
+                    </Link>
+
+                </div>
+
+
+                <div className='flex items-center justify-evenly  pl-2'>
+
+                    <Link href='/photo'>
+                        <a >
+                            <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
+                        </a>
+                    </Link>
+
+                    <Link href='https://www.chutlunds.live/'>
+                        <a >
+                            <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Sex Videos</p>
+                        </a>
+                    </Link>
+                </div>
 
 
 
@@ -317,14 +304,20 @@ function Navbar() {
                 <div className='flex items-center justify-between  bg-orange-300  pt-2 pb-2 '>
 
                     <div className='flex items-center space-x-1 md:space-x-3 ' >
-                        <Link href='/'>
 
-                            <p className=' align-center text-center font-body text-4xl cursor-pointer lg:text-left lg:ml-6'>Desi Kahaniya</p>
+                        <div>
 
-                        </Link>
+                            <Link href='/'>
+
+                                <p className=' align-center text-center font-footer font-semibold text-4xl cursor-pointer lg:text-left lg:ml-6'>DesiKahaniya.in</p>
+
+                            </Link>
+
+                            <p className=' align-center text-center font-footer font-extralight text-sm cursor-pointer lg:text-left lg:ml-6'>अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ</p>
+                        </div>
                         {location &&
 
-                            <div className='cursor-pointer'>
+                            <div className=''>
                                 <ReactCountryFlag
                                     svg
                                     countryCode={location.country_code}
@@ -352,7 +345,7 @@ function Navbar() {
                         </a>
                     </div>
 
-
+                    {/* 
                     <div className='flex space-x-4 items-center  '>
 
 
@@ -364,7 +357,7 @@ function Navbar() {
                             </button>
                         </div>
 
-                    </div>
+                    </div> */}
 
                 </div>
 
