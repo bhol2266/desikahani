@@ -5,6 +5,7 @@ import fetchdata from 'node-fetch';
 import Head from 'next/head'
 import { Fragment, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 
 import {
@@ -51,6 +52,7 @@ function Story({ story_details }) {
     return (
         <div className="md:w-3/5 p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
             <Head>
+                <meta name="referrer" content="no-referrer" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charset="UTF-8" />
                 1
@@ -175,8 +177,12 @@ function Story({ story_details }) {
 
                         {story_details.tagsArray.map(tag => {
                             return (
+                                <Link key={tag} href={`/tag/${tag.toLowerCase().replace(/ /g,"-")}`}>
+                                    <a>
+                                        <p className='hover:text-red-800 cursor-pointer font-semibold underline rounded text-xs m- border-gray-500  ' >{tag}</p>
+                                    </a>
+                                </Link>
 
-                                <p className='hover:text-red-800 cursor-pointer font-semibold underline rounded text-xs m- border-gray-500  ' key={tag}>{tag}</p>
                             )
                         })}
                     </div>
@@ -185,10 +191,20 @@ function Story({ story_details }) {
 
                 <div className='my-2'>
                     {story_details.storiesLink_insideParagrapgh.map(item => {
+
+                        const rough = item.href.substring(item.href.indexOf('.com/') + 5, item.href.length - 1)
+                        const category = rough.substring(0, rough.indexOf('/'))
+                        const title = rough.substring(rough.indexOf('/') + 1, rough.length)
+
+
                         return (
                             <div key={item.name} className='flex'>
                                 <ChevronRightIcon className='icon' />
-                                <p onClick={() => { onClickHandler(item.href, item.title) }} className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                <Link href={`/${category}/${title}`}>
+                                    <a>
+                                        <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                    </a>
+                                </Link>
                             </div>
                         )
                     })}
@@ -202,10 +218,19 @@ function Story({ story_details }) {
 
                 <div className='my-2'>
                     {story_details.relatedStoriesLinks.map(item => {
+                        const rough = item.href.substring(item.href.indexOf('.com/') + 5, item.href.length - 1)
+                        const category = rough.substring(0, rough.indexOf('/'))
+                        const title = rough.substring(rough.indexOf('/') + 1, rough.length)
+
+
                         return (
                             <div key={item.name} className='flex'>
                                 <ChevronRightIcon className='icon' />
-                                <p onClick={() => { onClickHandler(item.href, item.title) }} className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                <Link href={`/${category}/${title}`}>
+                                    <a>
+                                        <p className='underline hover:text-red-800 cursor-pointer '>{item.title}</p>
+                                    </a>
+                                </Link>
                             </div>
                         )
                     })}
@@ -225,16 +250,7 @@ export default Story
 
 export async function getStaticPaths() {
 
-    var pathsArray = []
-    for (let index = 1; index <= 50; index++) {
 
-        var pics = require(`../../JsonData/pics/page${index}.json`)
-        pics.map(pic => {
-            pathsArray.push({ params: { photoAlbum: pic.substring(pic.indexOf(".co/") + 4, pic.length - 1) } }
-            )
-        })
-
-    }
     return {
         paths: [{
             params: {

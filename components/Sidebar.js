@@ -260,9 +260,20 @@ function Sidebar() {
         </p>
 
         {recentStories.map(story => {
-          return (
 
-            <p key={story.name} onClick={() => { onClickHandler(story.href, story.name) }} className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
+          const rough = story.href.substring(story.href.indexOf('.com/') + 5, story.href.length - 1)
+          const category = rough.substring(0, rough.indexOf('/'))
+          const title = rough.substring(rough.indexOf('/') + 1, rough.length)
+
+
+
+          return (
+            <Link key={story.name} href={`/${category}/${title}`}>
+              <a >
+                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">{story.name}</p>
+              </a>
+            </Link>
+
 
           )
         })}

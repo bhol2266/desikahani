@@ -5,11 +5,21 @@ import fetchdata from 'node-fetch';
 import Stories from '../../../../components/Stories';
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Link from 'next/link';
+import { BeatLoader } from 'react-spinners';
 
 
 function Category({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
 
-    const router = useRouter()
+    const router = useRouter();
+    if (router.isFallback) {
+        return (
+            <div className="flex justify-center mx-auto mt-10 ">
+                <BeatLoader loading size={25} color={'red'} />
+            </div>
+        )
+    }
+
 
     return (
         <div>
@@ -43,6 +53,7 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
             <Stories stories={finalDataArray} />
 
 
+
             {/* PAGINATION */}
             <div className='flex justify-center items-center flex-wrap text-black'>
                 {pagination_nav_pages.map(page => {
@@ -56,27 +67,27 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
                     }
                     if (page.includes('Page')) {
                         return (
-                            <p key={page} onClick={() => {
-                                router.push(`/category/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
+                            <Link key={page} href={`/category/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`}>
+                                <a>
+                                    <p
+                                        className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
+                                        {page.substring(page.indexOf('Page') + 4, page.length)}
+                                    </p>
+                                </a>
+                            </Link>
 
-                            }}
-                                className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
-                                {page.substring(page.indexOf('Page') + 4, page.length)}
-                            </p>
                         )
                     }
                     else {
                         return (
-                            <p onClick={() => {
-                                if (page.includes('Next')) {
-                                    router.push(`/category/${CategoryHref}/page/${currentPage + 1}`)
-                                } else {
-                                    router.push(`/category/${CategoryHref}/page/${currentPage - 1}`)
-                                }
+                            <Link key={page} href={page.includes('Next') ? `/category/${CategoryHref}/page/${parseInt(currentPage) + 1}` : `/category/${CategoryHref}/page/${currentPage - 1}`}>
+                                <a>
+                                    <p className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
+                                        {page}
+                                    </p>
+                                </a>
+                            </Link>
 
-                            }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
-                                {page}
-                            </p>
                         )
                     }
 
@@ -94,10 +105,87 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
 export default Category
 
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+    const categories = [
+
+        {
+            category_title: 'Aunty Sex Story',
+            href: 'aunty-sex'
+        },
+
+        {
+            category_title: 'Bhabhi Sex',
+            href: 'bhabhi-sex'
+        },
+        {
+            category_title: 'Desi Kahani',
+            href: 'desi-kahani'
+        },
+
+        {
+            category_title: 'Family Sex Stories',
+            href: 'family-sex-stories'
+        },
+        {
+            category_title: 'First Time Sex',
+            href: 'first-time-sex'
+        },
+        {
+            category_title: 'Gay Sex Stories In Hindi',
+            href: 'gay-sex-story-hindi'
+        },
+        {
+            category_title: 'Group Sex Stories',
+            href: 'group-sex-stories'
+        },
+        {
+            category_title: 'Indian Sex Stories',
+            href: 'indian-sex-stories'
+        },
+        {
+            category_title: 'Sali Sex',
+            href: 'sali-sex'
+        },
+        {
+            category_title: 'Teacher Sex',
+            href: 'teacher-sex'
+        },
+        {
+            category_title: 'Teenage Girl',
+            href: 'teenage-girl'
+        },
+        {
+            category_title: 'XXX Kahani',
+            href: 'xxx-kahani'
+        },
+        {
+            category_title: 'अन्तर्वासना',
+            href: 'antarvasna'
+        },
+        {
+            category_title: 'हिंदी सेक्स स्टोरीज',
+            href: 'hindi-sex-stories'
+        },
+
+    ]
+
+    var arrayPaths = []
+
+    for (let index = 0; index < categories.length; index++) {
+        arrayPaths.push({ params: { category: categories[index].href, page: '1' } })
+    }
+    return {
+
+        paths: arrayPaths,
+        fallback: true // false or 'blocking'
+    };
+}
 
 
-    const { category, page } = context.query
+export async function getStaticProps(context) {
+
+
+    const { category, page } = context.params
 
 
 
@@ -113,7 +201,6 @@ export async function getServerSideProps(context) {
         var descriptionArray = []
         var hrefArray = []
         var tagsArray = []
-        var author_link = []
         var authorArray = []
 
         const response = await fetchdata(url)
@@ -134,18 +221,22 @@ export async function getServerSideProps(context) {
 
 
         })
-        $('.url.fn.n').each((i, el) => {
-
-            const data = $(el).attr('href')
-            author_link.push(data)
-
-            const select = cheerio.load(el)
-            select('span').each((i, el) => {
-                const data = $(el).text()
-                authorArray.push(data)
-            })
+        //Author name and link
+        var authorName = []
+        var authorHref = []
+        $('.author-name').each((i, el) => {
+            const data = $(el).text()
+            authorName.push(data)
 
         })
+
+        $('.url.fn.n').each((i, el) => {
+            const data = $(el).attr('href')
+            authorHref.push(data)
+        })
+        for (let index = 0; index < authorName.length; index++) {
+            authorArray.push({ name: authorName[index], href: authorHref[index] })
+        }
 
 
 
@@ -176,7 +267,8 @@ export async function getServerSideProps(context) {
             const select = cheerio.load(el)
             select('a').each((i, el) => {
                 const data = $(el).text()
-                array.push(data)
+                const href = $(el).attr('href')
+                array.push({ name: data, href: href })
 
             })
             tagsArray.push(array)
@@ -212,7 +304,6 @@ export async function getServerSideProps(context) {
             finalDataArray.push({
                 Title: TitleArray[index],
                 author: authorArray[index],
-                author_link: author_link[index],
                 date: dateArray[index],
                 views: viewsArray[index],
                 description: descriptionArray[index] ? descriptionArray[index] : "",

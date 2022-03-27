@@ -25,7 +25,7 @@ import Link from 'next/link';
 var navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Leaked Pictures', href: '/photo', current: false },
-    { name: 'Community', href: '#', current: false },
+    { name: 'Audio Sex Story', href: `/tag/audio-sex-story`, current: false },
     { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
     { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
 ]
@@ -290,6 +290,13 @@ function Navbar() {
                     </Transition>
                 </Menu>
 
+
+
+                <Link href='tag/audio-sex-story'>
+                    <a >
+                        <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
+                    </a>
+                </Link>
                 <Link href='/photo'>
                     <a >
                         <p className='font-bold sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>

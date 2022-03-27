@@ -157,15 +157,6 @@ export async function getStaticPaths() {
             href: 'hindi-sex-stories'
         },
 
-
-
-
-
-
-
-
-
-
     ]
 
     var arrayPaths = []

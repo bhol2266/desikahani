@@ -5,12 +5,20 @@ import fetchdata from 'node-fetch';
 import Stories from '../../../../components/Stories';
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Link from 'next/link';
+import { BeatLoader } from 'react-spinners';
 
 
 function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
 
-    const router = useRouter()
-
+    const router = useRouter();
+    if (router.isFallback) {
+        return (
+            <div className="flex justify-center mx-auto mt-10 ">
+                <BeatLoader loading size={25} color={'red'} />
+            </div>
+        )
+    }
     return (
         <div>
             <Head>
@@ -56,27 +64,27 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                     }
                     if (page.includes('Page')) {
                         return (
-                            <p key={page} onClick={() => {
-                                router.push(`/tag/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
+                            <Link key={page} href={`/tag/${CategoryHref}/page/${page.substring(page.indexOf('Page') + 4, page.length)}`}>
+                                <a>
+                                    <p
+                                        className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
+                                        {page.substring(page.indexOf('Page') + 4, page.length)}
+                                    </p>
+                                </a>
+                            </Link>
 
-                            }}
-                                className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
-                                {page.substring(page.indexOf('Page') + 4, page.length)}
-                            </p>
                         )
                     }
                     else {
                         return (
-                            <p onClick={() => {
-                                if (page.includes('Next')) {
-                                    router.push(`/tag/${CategoryHref}/page/${currentPage + 1}`)
-                                } else {
-                                    router.push(`/tag/${CategoryHref}/page/${currentPage - 1}`)
-                                }
+                            <Link key={page} href={page.includes('Next') ? `/tag/${CategoryHref}/page/${parseInt(currentPage) + 1}` : `/tag/${CategoryHref}/page/${currentPage - 1}`}>
+                                <a>
+                                    <p className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
+                                        {page}
+                                    </p>
+                                </a>
+                            </Link>
 
-                            }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
-                                {page}
-                            </p>
                         )
                     }
 
@@ -93,8 +101,23 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
 export default Index
 
 
+export async function getStaticPaths() {
 
-export async function getServerSideProps(context) {
+
+    return {
+        paths: [{
+            params: {
+                tag: 'hot-girl',
+                page: '1'
+            }
+        }],
+        fallback: true // false or 'blocking'
+    };
+}
+
+
+
+export async function getStaticProps(context) {
 
 
     const { tag, page } = context.params

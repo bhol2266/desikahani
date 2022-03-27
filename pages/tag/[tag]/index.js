@@ -5,11 +5,19 @@ import fetchdata from 'node-fetch';
 import Stories from '../../../components/Stories';
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { BeatLoader } from 'react-spinners';
 
 
 function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
 
-    const router = useRouter()
+    const router = useRouter();
+    if (router.isFallback) {
+        return (
+            <div className="flex justify-center mx-auto mt-10 ">
+                <BeatLoader loading size={25} color={'red'} />
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -93,9 +101,22 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
 
 export default Index
 
+export async function getStaticPaths() {
 
 
-export async function getServerSideProps(context) {
+    return {
+        paths: [{
+            params: {
+                tag: 'hot-girl'
+            }
+        }],
+        fallback: true // false or 'blocking'
+    };
+}
+
+
+
+export async function getStaticProps(context) {
 
 
     const { tag } = context.params
