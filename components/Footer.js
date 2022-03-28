@@ -61,7 +61,7 @@ function Footer() {
             </div>
 
             <div className='flex p-2 items-center justify-between  w-4/5 mx-auto'>
-                <p className='font-semibold'>© 2022 DesiKahaniya.in IS A FREE PORN VIDEOS</p>
+                <p className='font-semibold'>© 2022 DesiKahaniya.in IS A Hindi Sex Stories Website</p>
 
                 <div className='p-2  rounded'>
 

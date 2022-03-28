@@ -279,7 +279,7 @@ function Sidebar() {
         })}
 
       </div>
-
+{/* 
       <div   >
         <p className="w-56  text-lg  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">पुरालेख
         </p>
@@ -292,7 +292,7 @@ function Sidebar() {
           )
         })}
 
-      </div>
+      </div> */}
     </div>
   )
 }
