@@ -35,13 +35,10 @@
     "react-firebase-hooks": "^5.0.3",
     "react-ga": "^3.3.0",
     "react-hover-video-player": "^9.4.0",
-    "react-jw-player": "^1.19.1",
     "react-paginate": "^8.1.0",
     "react-player": "^2.9.0",
-    "react-responsive-carousel": "^3.2.22",
     "react-spinners": "^0.11.0",
     "sharp": "^0.29.3",
-    "xpath-html": "^1.0.2",
     "yarn": "^1.22.17"
   },
   "devDependencies": {
