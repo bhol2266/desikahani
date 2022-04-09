@@ -19,7 +19,6 @@
     "exoclick-react": "^1.1.1",
     "extract-urls": "^1.3.2",
     "firebase": "^9.6.8",
-    "firebase-tools": "^10.1.2",
     "fs": "^0.0.1-security",
     "global": "^4.4.0",
     "heroicons": "^1.0.5",

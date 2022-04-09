@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import fetchdata from 'node-fetch';
 import React, { useState } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import PicsThumbnail from '../../components/PicsThumbnail';
 import { BeatLoader } from 'react-spinners';
 
