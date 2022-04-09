@@ -141,7 +141,7 @@ export default Album
 export async function getStaticPaths() {
 
     var pathsArray = []
-    for (let index = 1; index <= 50; index++) {
+    for (let index = 1; index <= 5; index++) {
 
         var pics = require(`../../JsonData/pics/page${index}.json`)
         pics.map(pic => {
