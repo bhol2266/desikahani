@@ -13,7 +13,7 @@ function Footer() {
 
     return (
 
-        <div className={`font-footer mx-auto bg-orange-300   ${spinnerLoading ? "hidden" : ""}`}>
+        <div className={`font-footer mx-auto bg-orange-300  ${spinnerLoading ? "hidden" : ""}`}>
             < div className=" w-4/5 mx-auto p-1 mt-1 flex items-center justify-between ">
                 <div className=" flex flex-wrap justify-between min-w-full">
                     <Link
