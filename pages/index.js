@@ -17,8 +17,8 @@ import StoryThumbnail from '../components/StoryThumbnail';
 import Stories from '../components/Stories';
 
 export default function Home({ finalDataArray, pagination_nav_pages, currentPage }) {
-  console.log(finalDataArray);
-  console.log(pagination_nav_pages);
+
+  const { setcurrentLocation } = useContext(videosContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -104,27 +104,27 @@ export default function Home({ finalDataArray, pagination_nav_pages, currentPage
               }
               if (page.includes('Page')) {
                 return (
-                  <p key={page} onClick={() => {
-                    router.push(`/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
+                  <Link key={page} href={`/page/${page.substring(page.indexOf('Page') + 4, page.length)}`}>
+                    <a>
+                      <p
+                        className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
+                        {page.substring(page.indexOf('Page') + 4, page.length)}
+                      </p>
+                    </a>
+                  </Link>
 
-                  }}
-                    className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
-                    {page.substring(page.indexOf('Page') + 4, page.length)}
-                  </p>
                 )
               }
               else {
                 return (
-                  <p onClick={() => {
-                    if (page.includes('Next')) {
-                      router.push(`/page/${currentPage + 1}`)
-                    } else {
-                      router.push(`/page/${currentPage - 1}`)
-                    }
+                  <Link key={page} href={page.includes('Next') ? `/page/${parseInt(currentPage) + 1}` : `/page/${currentPage - 1}`}>
+                    <a>
+                      <p className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
+                        {page}
+                      </p>
+                    </a>
+                  </Link>
 
-                  }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
-                    {page}
-                  </p>
                 )
               }
 
