@@ -1,7 +1,9 @@
+import { Headers } from 'node-fetch';
 import Head from 'next/head'
 import { useContext, useEffect, useState } from 'react'
-
-
+import cheerio from 'cheerio';
+import extractUrls from "extract-urls";
+import fetchdata from 'node-fetch';
 import Sidebar from '../components/Sidebar';
 import Videos from '../components/Stories';
 import React from 'react'
@@ -14,7 +16,9 @@ import RecommendedAds from '../components/Ads/RecommendedAds';
 import StoryThumbnail from '../components/StoryThumbnail';
 import Stories from '../components/Stories';
 
-export default function Home() {
+export default function Home({ finalDataArray,pagination_nav_pages }) {
+  console.log(finalDataArray);
+  console.log(pagination_nav_pages);
   //Scroll to top
   const scrollTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
@@ -78,8 +82,8 @@ export default function Home() {
           content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
         <meta property="og:url" content="https://www.desikahaniya.in/" />
         <meta property="og:site_name" content="Free Hindi Sex Stories" />
-      
-      
+
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ" />
         <meta name="twitter:description"
@@ -133,3 +137,159 @@ export default function Home() {
 }
 
 
+export async function getStaticProps() {
+
+
+  var finalDataArray = []
+  var categoryTitle = ''
+  var categoryDescription = ''
+  var pagination_nav_pages = []
+  var bodyy = null
+
+  const scrape = async (url) => {
+
+    var TitleArray = []
+    var dateArray = []
+    var viewsArray = []
+    var descriptionArray = []
+    var hrefArray = []
+    var tagsArray = []
+    var authorArray = []
+
+
+    const meta = {
+      'user-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+    }
+    const header = new Headers(meta)
+
+
+
+    const response = await fetchdata(url)
+    const body = await response.text();
+    const $ = cheerio.load(body)
+
+
+
+
+    $('.entry-title a').each((i, el) => {
+
+
+
+      const data = $(el).text()
+      const href = $(el).attr("href")
+      TitleArray.push(data)
+      hrefArray.push(href)
+
+    })
+
+
+
+    //Author name and link
+    var authorName = []
+    var authorHref = []
+    $('.author-name').each((i, el) => {
+      const data = $(el).text()
+      authorName.push(data)
+
+    })
+
+    $('.url.fn.n').each((i, el) => {
+      const data = $(el).attr('href')
+      authorHref.push(data)
+    })
+
+    for (let index = 0; index < authorName.length; index++) {
+      authorArray.push({ name: authorName[index], href: authorHref[index] })
+    }
+
+
+
+    $('.posted-on time').each((i, el) => {
+      const data = $(el).text()
+      dateArray.push(data)
+
+    })
+
+
+    $('.post-views-eye').each((i, el) => {
+
+      const data = $(el).text()
+      viewsArray.push(data)
+
+    })
+    $('.entry-content p:nth-child(1)').each((i, el) => {
+
+      const data = $(el).text()
+      descriptionArray.push(data)
+
+    })
+    $('.tags-links').each((i, el) => {
+
+      var array = []
+
+      const select = cheerio.load(el)
+      select('a').each((i, el) => {
+        const data = $(el).text()
+        const href = $(el).attr('href')
+        array.push({ name: data, href: href })
+
+      })
+      tagsArray.push(array)
+
+    })
+
+    $('.page-title').each((i, el) => {
+
+      const data = $(el).text()
+      categoryTitle = data
+
+    })
+
+    $('.taxonomy-description  p:nth-child(1)').each((i, el) => {
+
+      const data = $(el).text()
+      categoryDescription = data
+
+    })
+
+
+    $('.nav-links').children().each((i, el) => {
+
+      const data = $(el).text()
+      pagination_nav_pages.push(data)
+    })
+
+
+
+
+    for (let index = 0; index < TitleArray.length; index++) {
+
+      finalDataArray.push({
+        Title: TitleArray[index],
+        author: authorArray[index],
+        date: dateArray[index],
+        views: viewsArray[index],
+        description: descriptionArray[index] ? descriptionArray[index] : "",
+        href: hrefArray[index],
+        tags: tagsArray[index],
+
+      })
+    }
+
+
+  }
+
+
+  await scrape(`https://www.freesexkahani.com/page/1/`)
+
+
+  return {
+    props: {
+      finalDataArray: finalDataArray,
+      pagination_nav_pages: pagination_nav_pages,
+      currentPage: 1,
+    }
+  }
+
+
+}
