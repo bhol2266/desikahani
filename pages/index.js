@@ -16,10 +16,10 @@ import RecommendedAds from '../components/Ads/RecommendedAds';
 import StoryThumbnail from '../components/StoryThumbnail';
 import Stories from '../components/Stories';
 
-export default function Home({ finalDataArray, pagination_nav_pages,currentPage }) {
+export default function Home({ finalDataArray, pagination_nav_pages, currentPage }) {
   console.log(finalDataArray);
   console.log(pagination_nav_pages);
-  
+
   useEffect(() => {
     async function fetchData() {
       var location = {}
@@ -84,7 +84,6 @@ export default function Home({ finalDataArray, pagination_nav_pages,currentPage 
           </h1>
 
 
-          <p className='font-bold sm:text-2xl text-green-900  text-center p-1 pr-6'>{`PAGE :${currentPageNumberURL}`}</p>
 
 
           <Stories stories={finalDataArray} />
