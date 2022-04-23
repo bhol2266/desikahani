@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { BeatLoader } from 'react-spinners';
 
 
-function Page({ finalDataArray, categoryTitle, categoryDescription, pagination_nav_pages, currentPage, CategoryHref }) {
+function Page({ finalDataArray, pagination_nav_pages, currentPage }) {
 
     const router = useRouter();
     if (router.isFallback) {
