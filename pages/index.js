@@ -16,7 +16,7 @@ import RecommendedAds from '../components/Ads/RecommendedAds';
 import StoryThumbnail from '../components/StoryThumbnail';
 import Stories from '../components/Stories';
 
-export default function Home({ finalDataArray,pagination_nav_pages }) {
+export default function Home({ finalDataArray, pagination_nav_pages }) {
   console.log(finalDataArray);
   console.log(pagination_nav_pages);
   //Scroll to top
@@ -102,11 +102,14 @@ export default function Home({ finalDataArray,pagination_nav_pages }) {
 
           <p className='font-bold sm:text-2xl text-green-900  text-center p-1 pr-6'>{`PAGE :${currentPageNumberURL}`}</p>
 
-          <Stories stories={stories} />
+          {/* <Stories stories={stories} /> */}
+
+          <Stories stories={finalDataArray} />
+
 
 
           {/* PAGINATION */}
-          <div className='flex justify-center items-center flex-wrap'>
+          {/* <div className='flex justify-center items-center flex-wrap'>
 
             <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL - 1); scrollTop() }} className={`${currentPageNumberURL === 1 ? "hidden" : ""}  text-sm sm:text-med border-2 sm:mx-4 border-gray-500 rounded bg-orange-300 p-1 m-1 text-black  hover:bg-orange-500`}>Previous</button>
 
@@ -123,7 +126,50 @@ export default function Home({ finalDataArray,pagination_nav_pages }) {
 
             <button onClick={() => { setcurrentPageNumberURL(currentPageNumberURL + 1); scrollTop() }} className={`${currentPageNumberURL === parseInt(pages[pages.length - 2]) ? "hidden" : ""}  text-sm sm:text-med ml-1 border-2 sm:mx-4  border-gray-500 rounded bg-orange-300  m-1 text-black hover:bg-orange-500 p-4 pt-1 pb-1 `}>Next</button>
 
+          </div> */}
+
+          {/* PAGINATION */}
+          <div className='flex justify-center items-center flex-wrap text-black'>
+            {pagination_nav_pages.map(page => {
+
+              if (page.includes('…')) {
+                return (
+                  <p key={page} className={`px-1 sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
+                    {page}
+                  </p>
+                )
+              }
+              if (page.includes('Page')) {
+                return (
+                  <p key={page} onClick={() => {
+                    router.push(`/page/${page.substring(page.indexOf('Page') + 4, page.length)}`)
+
+                  }}
+                    className={`${currentPage === parseInt(page.substring(page.indexOf('Page') + 4, page.length)) ? "bg-orange-200" : ""} px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1  hover:bg-orange-200 rounded `} >
+                    {page.substring(page.indexOf('Page') + 4, page.length)}
+                  </p>
+                )
+              }
+              else {
+                return (
+                  <p onClick={() => {
+                    if (page.includes('Next')) {
+                      router.push(`/page/${currentPage + 1}`)
+                    } else {
+                      router.push(`/page/${currentPage - 1}`)
+                    }
+
+                  }} key={page} className={`px-1 cursor-pointer sm:p-2 ml-1  border-2 border-orange-800 mb-1 hover:bg-orange-200 rounded `} >
+                    {page}
+                  </p>
+                )
+              }
+
+            })}
+
+
           </div>
+
         </div>
       </main>
 
