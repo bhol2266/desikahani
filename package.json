@@ -1,6 +1,7 @@
 {
   "name": "app",
   "private": true,
+  "type": "module",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
