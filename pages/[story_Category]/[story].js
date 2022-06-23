@@ -156,7 +156,7 @@ function Story({ story_details }) {
             {story_details.description.map(p => {
                 return (
                     <div key={p}>
-                        <p className={`text-gray-800 text-${fontSize}`} >
+                        <p className={`text-gray-800 font-kalam text-${fontSize}`} >
                             {p}
                             <br />
                         </p>

@@ -46,7 +46,7 @@ function StoryThumbnail({ story_details }) {
 
             <Link href={`/${category}/${title}`}>
                 <a>
-                    <p className=' mb-1 font-semibold text-md text-right text-orange-800 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
+                    <p className='font-kalam mb-1 font-semibold text-md text-right text-orange-800 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
                 </a>
             </Link>
 
