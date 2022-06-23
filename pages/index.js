@@ -51,7 +51,7 @@ export default function Home({ finalDataArray, pagination_nav_pages, currentPage
 
 
   return (
-    <div >
+    <div className='w-full' >
       <Head>
         <title>Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ</title>
         <meta name="description"
@@ -79,8 +79,8 @@ export default function Home({ finalDataArray, pagination_nav_pages, currentPage
 
 
       <main className="flex ">
-        <div>
-          <h1 className="text-center font-hindi text-2xl  rounded-lg font-semibold px-24 py-3 shadow-md p-2 m-1 bg-orange-100">
+        <div className='w-full'>
+          <h1 className="text-center font-light text-sb font-hindi text-[22px] font-md md:text-[30px] rounded-lg  md:px-24 py-3 shadow-md ">
             अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ
           </h1>
 

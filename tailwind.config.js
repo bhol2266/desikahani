@@ -22,7 +22,8 @@ module.exports = {
         '2xl':"1250px"
       },
       colors: {
-        'github': '#24292F'
+        'github': '#24292F',
+        'sb': '#454545'
       },
       fontFamily: {
         body: ['Pushster'],
