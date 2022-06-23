@@ -213,20 +213,20 @@ function Navbar() {
 
 
             </div>
-            <div className='flex flex-col font-DMsans text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
+            <div className='flex flex-col font-DMsans py-2 text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
 
                 <div className='flex items-center justify-evenly  pl-2 w-full '>
                     <Link href='/'>
                         <a >
-                            <p className='font-bold text-[14px] sm:text-xl  text-center p-1 pr-6 hover:text-orange-800 ml-2  '>Home</p>
+                            <p className='font-bold text-[16px] sm:text-xl  text-center p-1 pr-6 hover:text-orange-800 ml-2  '>Home</p>
                         </a>
                     </Link>
 
                     <Menu as="div" className={` relative  text-left`}>
                         <div className=' w-fit'>
-                            <Menu.Button className="flex items-center font-bold text-[14px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
+                            <Menu.Button className="flex items-center font-bold text-[16px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
                                 Categories
-                                <ChevronDownIcon className='h-6 pt-1 ml-1' />
+                                <ChevronDownIcon className='sm:h-6 h-5 mb-[3px] pt-1 ml-1' />
                             </Menu.Button>
 
                         </div>
@@ -268,7 +268,7 @@ function Navbar() {
 
                     <Link href='/tag/audio-sex-story'>
                         <a >
-                            <p className='font-bold text-[14px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
+                            <p className='font-bold text-[16px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
                         </a>
                     </Link>
 
@@ -279,13 +279,13 @@ function Navbar() {
 
                     <Link href='/photo'>
                         <a >
-                            <p className='font-bold text-[14px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
+                            <p className='font-bold text-[16px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
                         </a>
                     </Link>
 
                     <Link href='https://www.chutlunds.live/'>
                         <a >
-                            <p className='font-bold text-[14px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Sex Videos</p>
+                            <p className='font-bold text-[16px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Sex Videos</p>
                         </a>
                     </Link>
                 </div>
