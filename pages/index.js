@@ -80,7 +80,7 @@ export default function Home({ finalDataArray, pagination_nav_pages, currentPage
 
       <main className="flex ">
         <div>
-          <h1 className="text-center text-xl font-semibold rounded-lg border-2 border-gray-300 shadow-md p-2 m-1 bg-orange-100">
+          <h1 className="text-center font-hindi text-2xl  rounded-lg font-semibold px-24 py-3 shadow-md p-2 m-1 bg-orange-100">
             अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ
           </h1>
 

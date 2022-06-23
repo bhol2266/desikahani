@@ -240,14 +240,14 @@ function Sidebar() {
     <div className='mx-6 pt-1 hidden md:flex md:flex-col'>
 
       <div   >
-        <p className="w-56  text-lg  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">श्रेणियां
+        <p className="w-56 text-[22px]  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">श्रेणियां
         </p>
 
         {categories.map(category => {
           return (
             <Link key={category.category_title} href={`/category/${category.href}`}>
               <a >
-                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{category.category_title}</p>
+                <p className="w-56 font-inter shadow-lg my-2 py-2 font-semibold text-md hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{category.category_title}</p>
               </a>
             </Link>
           )
@@ -256,7 +256,7 @@ function Sidebar() {
       </div>
 
       <div className=' pt-1 hidden md:flex md:flex-col my-5' >
-        <p className="w-56 text-lg   text-md  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">हाल के पोस्ट
+        <p className="w-56 font-hindi  text-lg   text-[24px]  border-gray-400  rounded-md text-black font-bold  p-1 pl-4 pr-2 cursor-pointer bg-white opacity-75">हाल के पोस्ट
         </p>
 
         {recentStories.map(story => {
@@ -270,7 +270,7 @@ function Sidebar() {
           return (
             <Link key={story.name} href={`/${category}/${title}`}>
               <a >
-                <p className="w-56 border-2   font-semibold text-md  border-gray-400 hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{story.name}</p>
+                <p  className="font-hindi w-56 shadow-lg my-2 py-2 font-semibold text-md hover:bg-orange-200 rounded-md text-orange-900  p-1 pl-4 pr-2 cursor-pointer bg-white ">{story.name}</p>
               </a>
             </Link>
 

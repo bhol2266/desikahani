@@ -26,7 +26,16 @@ module.exports = {
       },
       fontFamily: {
         body: ['Pushster'],
-        footer: ['Tinos']
+        manrope: ['Manrope'],
+        delius: ['Delius Unicase'],
+        inter: ['Inter'],
+        poppins: ['Poppins'],
+        DMsans: ['DM Sans'],
+        Opensans: ['Open Sans'],
+        SFuiDisplay: ['SF UI Display'],
+        Abhayalibre: ['Abhaya Libre'],
+        kalam: ['Kalam'],
+        hindi: ['Jaldi'],
 
       }
     },
