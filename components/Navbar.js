@@ -213,7 +213,7 @@ function Navbar() {
 
 
             </div>
-            <div className='flex flex-col items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
+            <div className='flex flex-col font-inter items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
 
                 <div className='flex items-center justify-evenly  pl-2 w-full '>
                     <Link href='/'>
@@ -246,7 +246,7 @@ function Navbar() {
                                     return (
                                         <Menu.Item key={item.category_title}  >
                                             {({ active }) => (
-                                                <p onClick={() => { router.push(`/category/${item.href}`) }} className='block px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
+                                                <p onClick={() => { router.push(`/category/${item.href}`) }} className='block font-inter px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
                                                 >
                                                     {item.category_title}
                                                 </p>
