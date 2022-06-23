@@ -192,8 +192,8 @@ function Navbar() {
                                                 <Disclosure.Button
                                                     as="a"
                                                     className={classNames(
-                                                        item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white',
-                                                        'block px-3 py-2 rounded-md text-base font-medium'
+                                                        item.current ? 'bg-sb text-white' : 'text-sb font-inter hover:bg-sb hover:text-white',
+                                                        'block px-3 py-2 rounded-md  font-medium text-sb'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
@@ -213,18 +213,18 @@ function Navbar() {
 
 
             </div>
-            <div className='flex flex-col font-DMsans py-2 text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
+            <div className='flex flex-col font-poppins font-semibold  py-2 text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
 
                 <div className='flex items-center justify-evenly  pl-2 w-full '>
                     <Link href='/'>
                         <a >
-                            <p className='font-bold text-[18px] sm:text-xl  text-center p-1 pr-6 hover:text-orange-800 ml-2  '>Home</p>
+                            <p className=' text-[18px] sm:text-xl  text-center p-1 pr-6 hover:text-orange-800 ml-2  '>Home</p>
                         </a>
                     </Link>
 
                     <Menu as="div" className={` relative  text-left`}>
                         <div className=' w-fit'>
-                            <Menu.Button className="flex items-center font-bold text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
+                            <Menu.Button className="flex items-center font-semibold  text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800  ">
                                 Categories
                                 <ChevronDownIcon className='sm:h-6 h-5 mb-[3px] pt-1 ml-1' />
                             </Menu.Button>
@@ -246,7 +246,7 @@ function Navbar() {
                                     return (
                                         <Menu.Item key={item.category_title}  >
                                             {({ active }) => (
-                                                <p onClick={() => { router.push(`/category/${item.href}`) }} className='block font-inter  px-4 py-2 text-sm font-semibold hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
+                                                <p onClick={() => { router.push(`/category/${item.href}`) }} className='block   px-4 py-2 text-sm  hover:bg-orange-200 hover:text-orange-800 cursor-pointer bg-orange-100'
                                                 >
                                                     {item.category_title}
                                                 </p>
@@ -268,7 +268,7 @@ function Navbar() {
 
                     <Link href='/tag/audio-sex-story'>
                         <a >
-                            <p className='font-bold text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
+                            <p className=' text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Audio Sex Story</p>
                         </a>
                     </Link>
 
@@ -279,13 +279,13 @@ function Navbar() {
 
                     <Link href='/photo'>
                         <a >
-                            <p className='font-bold text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
+                            <p className=' text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Leaked Pictures</p>
                         </a>
                     </Link>
 
                     <Link href='https://www.chutlunds.live/'>
                         <a >
-                            <p className='font-bold text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Sex Videos</p>
+                            <p className=' text-[18px] sm:text-xl   text-center p-1 pr-6 hover:text-orange-800 '>Sex Videos</p>
                         </a>
                     </Link>
                 </div>
