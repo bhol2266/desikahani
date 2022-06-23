@@ -213,7 +213,7 @@ function Navbar() {
 
 
             </div>
-            <div className='flex flex-col font-inter font-semibold  py-2 text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
+            <div className='flex flex-col font-inter font-semibold  py-1 text-sb  items-center mb-1 bg-orange-200 shadow-lg lg:hidden  '>
 
                 <div className='flex items-center justify-evenly  pl-2 w-full '>
                     <Link href='/'>

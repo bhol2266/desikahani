@@ -46,7 +46,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                 <meta name="twitter:data1" content="85" />
             </Head>
             <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`Category :${categoryTitle}`}</h1>
-            <p className='text-lg font-medium m-2 mx-4 md:text-xl font-hindi'>{categoryDescription}</p>
+            <p className='text-lg  m-2 mx-4 md:text-xl font-light text-sb font-hindi'>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : ${currentPage}`}</p>
             <Stories stories={finalDataArray} />
 

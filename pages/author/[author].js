@@ -34,9 +34,9 @@ function Author({ finalDataArray, categoryTitle, categoryDescription, pagination
                 <meta name="twitter:description" content="Sex Bhari Desi kahani Hindi me padh kar maja len. Gaon Ki ladki, bhabhi, aunty ki chut chudai, gand sex lund khada kar dengi. हिंदी में देसी सेक्स स्टोरीज."></meta>
             </Head>
 
-            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`
+            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`
 लेखक :${categoryTitle}`}</h1>
-            <p className='text-lg font-medium m-2 mx-4 md:text-xl '>{categoryDescription}</p>
+            <p className='text-lg m-2 mx-4 md:text-xl font-light text-sb font-hindi'>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : 1`}</p>
             <Stories stories={finalDataArray} />
 

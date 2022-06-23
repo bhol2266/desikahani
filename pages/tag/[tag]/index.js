@@ -48,7 +48,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
             <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`TAG :${categoryTitle}`}</h1>
 
             <p className='text-lg font-medium m-2 mx-4 md:text-xl font-inter'>{categoryDescription}</p>
-            <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl font-hindi '>{`PAGE : 1`}</p>
+            <p className='text-lg text-right  m-2 mx-4 md:text-xl font-light text-sb font-hindi '>{`PAGE : 1`}</p>
             <Stories stories={finalDataArray} />
 
 
