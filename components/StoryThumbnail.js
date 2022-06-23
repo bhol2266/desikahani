@@ -42,11 +42,11 @@ function StoryThumbnail({ story_details }) {
             </div>
 
 
-            <p className='text-gray-800 text-lg'>{story_details.description}</p>
+            <p className='text-gray-800 text-lg font-kalam'>{story_details.description}</p>
 
             <Link href={`/${category}/${title}`}>
                 <a>
-                    <p className='font-kalam mb-1 font-semibold text-md text-right text-orange-800 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
+                    <p className=' mb-1 font-semibold text-md text-right text-orange-800 hover:text-green-800 cursor-pointer'>पूरी कहानी पढ़ें</p>
                 </a>
             </Link>
 
@@ -57,7 +57,7 @@ function StoryThumbnail({ story_details }) {
                     return (
 
 
-                        <p onClick={() => { router.push(`/tag/${tag.href.substring(tag.href.indexOf('tag/') + 4, tag.href.length - 1)}`) }} className='hover:text-orange-800 cursor-pointer underlined  text-xs m-1 ' key={tag.name}>{tag.name}</p>
+                        <p onClick={() => { router.push(`/tag/${tag.href.substring(tag.href.indexOf('tag/') + 4, tag.href.length - 1)}`) }} className='hover:text-orange-800 cursor-pointer underline  text-xs m-1 ' key={tag.name}>{tag.name}</p>
                     )
                 })}
             </div>

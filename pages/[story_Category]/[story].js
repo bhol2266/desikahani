@@ -50,7 +50,7 @@ function Story({ story_details }) {
 
 
     return (
-        <div className="md:w-3/5 p-4 bg-orange-100 border-2 border-gray-400 m-2 shadow rounded-lg "  >
+        <div className="md:w-3/5 p-4 bg-orange-50  m-2 shadow rounded-lg "  >
             <Head>
                 <meta name="referrer" content="no-referrer" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
