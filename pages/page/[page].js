@@ -24,28 +24,10 @@ function Page({ finalDataArray, pagination_nav_pages, currentPage }) {
     return (
         <div>
             <Head>
-                <title>Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ</title>
+                <title>Free Desi kahani | Hindi sex story audio - हिंदी सेक्स कहानियाँ</title>
                 <meta name="description"
-                    content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
-                <link rel="icon" href="/favicon.ico" />
+                    content="Free Desi kahani Sex Stories, Antarvasna video, Antarvasna audio, Devar bhabhi sex story, Jija saali sex stories, desi sex story." />
 
-                <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-                <meta property="og:locale" content="hi_IN" />
-                <meta property="og:type" content="article" />
-
-                <meta property="og:title" content="Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ" />
-                <meta property="og:description"
-                    content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
-                <meta property="og:url" content="https://www.desikahaniya.in/" />
-                <meta property="og:site_name" content="Free Hindi Sex Stories" />
-
-
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Hindi Sex Stories - Antarvasna - हिंदी सेक्स कहानियाँ" />
-                <meta name="twitter:description"
-                    content="[Official Antarvasna] New best Hindi Sex Stories for free, Indian sexy stories daily of hot girls, bhabhi and aunties. रोज नई नई गर्मागर्म सेक्सी कहानियाँ असली अन्तर्वासना साईट पर." />
-                <meta name="twitter:label1" content="पोस्ट" />
-                <meta name="twitter:data1" content="85" />
             </Head>
 
             <Stories stories={finalDataArray} />

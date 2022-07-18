@@ -305,18 +305,14 @@ function Navbar() {
 
                     <div className='flex items-center space-x-1 md:space-x-3 ' >
 
+                        <img src='/apple-touch-icon.png' className='rounded-full h-16  ml-3 xl:ml-4 ' />
                         <div>
-
                             <Link href='/'>
-
-                                <p className=' align-center text-center font-footer font-semibold text-4xl cursor-pointer lg:text-left lg:ml-6'>DesiKahaniya.in</p>
-
+                                <p className=' align-center text-center font-footer font-semibold text-4xl cursor-pointer lg:text-left lg:ml-1'>DesiKahaniya.in</p>
                             </Link>
-
-                            <p className=' align-center text-center font-footer font-extralight text-sm cursor-pointer lg:text-left lg:ml-6'>अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ</p>
+                            <p className=' align-center text-center font-footer font-extralight text-sm cursor-pointer lg:text-left lg:ml-1'>अन्तर्वासना की हॉट हिंदी सेक्स कहानियाँ</p>
                         </div>
                         {location &&
-
                             <div className=''>
                                 <ReactCountryFlag
                                     svg

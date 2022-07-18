@@ -24,14 +24,6 @@ function Author({ finalDataArray, categoryTitle, categoryDescription, pagination
                 <title>{`${categoryTitle}- Free Desi Kahani Sex Stories`} </title>
                 <meta name="description"
                     content={`${categoryDescription}`} />
-
-                <meta property="og:locale" content="hi_IN" />
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content="Desi Kahani - अन्तर्वासना हिंदी सेक्स स्टोरी"></meta>
-                <meta property="og:description" content="Sex Bhari Desi kahani Hindi me padh kar maja len. Gaon Ki ladki, bhabhi, aunty ki chut chudai, gand sex lund khada kar dengi. हिंदी में देसी सेक्स स्टोरीज."></meta>
-                <meta property="og:url" content="https://www.freesexkahani.com/category/desi-kahani/"></meta>
-
-                <meta name="twitter:description" content="Sex Bhari Desi kahani Hindi me padh kar maja len. Gaon Ki ladki, bhabhi, aunty ki chut chudai, gand sex lund khada kar dengi. हिंदी में देसी सेक्स स्टोरीज."></meta>
             </Head>
 
             <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`

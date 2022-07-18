@@ -27,25 +27,6 @@ function Category({ finalDataArray, categoryTitle, categoryDescription, paginati
                 <title>{`${categoryTitle}- Free Desi Kahani Sex Stories`} </title>
                 <meta name="description"
                     content={`${categoryDescription}`} />
-
-
-                <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-                <meta property="og:locale" content="hi_IN" />
-                <meta property="og:type" content="article" />
-
-                <meta property="og:title" content={`${categoryTitle}- Free Hindi Sex Stories`} />
-                <meta property="og:description"
-                    content={`${categoryDescription}`} />
-                <meta property="og:url" content={`https://www.desikahaniya.in/category/${categoryTitle}/page/${currentPage}`} />
-                <meta property="og:site_name" content="Free Hindi Sex Stories" />
-
-
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${categoryTitle}- Free Hindi Sex Stories`} />
-                <meta name="twitter:description"
-                    content={`${categoryDescription}`} />
-                <meta name="twitter:label1" content="पोस्ट" />
-                <meta name="twitter:data1" content="85" />
             </Head>
             <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`${categoryTitle} - Desi Kahani`}</h1>
             <p className='text-lg  m-2 mx-4 md:text-xl font-light text-sb font-hindi'>{categoryDescription}</p>

@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="UTF-8" />
+        <meta property="og:locale" content="hi_IN" />
       </Head>
 
 

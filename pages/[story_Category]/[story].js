@@ -53,9 +53,7 @@ function Story({ story_details }) {
         <div className="md:w-3/5 p-4 bg-orange-50  m-2 shadow rounded-lg "  >
             <Head>
                 <meta name="referrer" content="no-referrer" />
-
                 <title>{`${story_Category.replace('-', ' ')} - ${story_details.Title}`}</title>
-
                 <meta name="description" content={story_details.description[0]} />
 
             </Head>
