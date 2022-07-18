@@ -128,6 +128,7 @@ function Navbar() {
                             <div className='flex  items-center justify-between'>
 
                                 <div className='flex items-center space-x-1' >
+                                    <img src='/apple-touch-icon.png' className='rounded-full h-16  ml-1.5' />
                                     <div>
 
                                         <Link href='/'>
