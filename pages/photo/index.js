@@ -39,7 +39,7 @@ function Pics({ dload_links }) {
     })
 
     return (
-        <div>
+        <div className=" ">
 
             <Head>
                 <title>Indian Nude Photos | Desi Scandals</title>
@@ -66,7 +66,7 @@ function Pics({ dload_links }) {
             <BannerAds />
 
 
-            <div className="grid grid-cols-2 p-1 sm:grid-cols-1 gap-x-1  md:grid-cols-3 lg:grid-cols-4 space-x-2 space-y-4 ">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3 lg:gap-4  md:grid-cols-5 lg:grid-cols-6">
 
                 {displaypics}
             </div>
