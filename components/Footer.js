@@ -16,52 +16,14 @@ function Footer() {
         <div className={`font-footer mx-auto bg-orange-300  ${spinnerLoading ? "hidden" : ""}`}>
             < div className=" w-4/5 mx-auto p-1 mt-1 flex items-center justify-between ">
                 <div className=" flex flex-wrap justify-between min-w-full">
-                    <Link
-                        passHref={true}
-                        href={'/contact'}
-                    >
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">Contact / support</p>
-                    </Link>
-
-
-                
-                    <Link
-                        passHref={true}
-                        href={'/parentalcontrol'}
-                    >
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">Parental control</p>
-
-                    </Link>
-
-
-
-                    <Link
-                        passHref={true}
-                        href={'/terms'}
-                    >
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">Terms of use</p>
-
-                    </Link>
-                    <Link
-                        passHref={true}
-                        href={'/privacy'}
-                    >
-
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">2257 Statement & Privacy Policy</p>
-                    </Link>
-                    <Link
-                        passHref={true}
-                        href={'/dmca'}
-                    >
-                        <p className="font-semibold  cursor-pointer text-lg hover:text-white text-black  ">DMCA / Copyright Claims</p>
-
-                    </Link>
+               
+              
                 </div>
 
             </div>
 
             <div className='flex p-2 items-center justify-between  w-4/5 mx-auto'>
-                <p className='font-semibold'>© 2022 DesiKahaniya.in IS A Hindi Sex Stories Website</p>
+                <p className='font-semibold'>© 2022 DesiKahaniya.in is a Hindi Sex Stories Website</p>
 
                 <div className='p-2  rounded'>
 
