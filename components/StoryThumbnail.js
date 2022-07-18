@@ -21,7 +21,7 @@ function StoryThumbnail({ story_details }) {
 
 
     return (
-        <div className=" p-4 bg-orange-100 shadow-md m-2  rounded-lg "  >
+        <div className=" p-4 bg-orange-100 shadow-md my-2  rounded-lg "  >
             <Link href={`/${category}/${title}`}>
                 <a>
                     <h2 className='text-xl font-semibold text-orange-800 cursor-pointer hover:text-green-800  '>{story_details.Title}</h2>
@@ -57,7 +57,7 @@ function StoryThumbnail({ story_details }) {
                     return (
 
 
-                        <p onClick={() => { router.push(`/tag/${tag.href.substring(tag.href.indexOf('tag/') + 4, tag.href.length - 1)}`) }} className='hover:text-orange-800 cursor-pointer underline  text-xs m-1 ' key={tag.name}>{tag.name}</p>
+                        <p onClick={() => { router.push(`/tag/${tag.href.substring(tag.href.indexOf('tag/') + 4, tag.href.length - 1)}`) }} className='hover:text-orange-800 cursor-pointer underline  text-xs m-1 font-arial' key={tag.name}>{tag.name}</p>
                     )
                 })}
             </div>

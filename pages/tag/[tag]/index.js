@@ -22,7 +22,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
     return (
         <div>
             <Head>
-                <title>{`${categoryTitle}- Free Hindi Sex Stories`} </title>
+            <title>{`${categoryTitle}- Free Desi Kahani Sex Stories`} </title>
                 <meta name="description"
                     content={`${categoryDescription}`} />
 
@@ -45,7 +45,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
                 <meta name="twitter:label1" content="पोस्ट" />
                 <meta name="twitter:data1" content="85" />
             </Head>
-            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl'>{`TAG :${categoryTitle}`}</h1>
+            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`${categoryTitle} - Desi Kahani`}</h1>
 
             <p className='text-lg font-medium m-2 mx-4 md:text-xl font-inter'>{categoryDescription}</p>
             <p className='text-lg text-right  m-2 mx-4 md:text-xl font-light text-sb font-hindi '>{`PAGE : 1`}</p>

@@ -16,7 +16,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
         <div>
 
             <Head>
-                <title>{`${categoryTitle}- Free Hindi Sex Stories`} </title>
+                <title>{`${categoryTitle}- Free Desi Kahani Sex Stories`} </title>
                 <meta name="description"
                     content={`${categoryDescription}`} />
 
@@ -41,7 +41,7 @@ function Index({ finalDataArray, categoryTitle, categoryDescription, pagination_
             </Head>
 
             
-            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`Category :${categoryTitle}`}</h1>
+            <h1 className='text-xl font-semibold m-2 mx-4  md:text-2xl font-inter'>{`${categoryTitle} - Desi Kahani`}</h1>
             <p className='text-lg  m-2 mx-4 md:text-xl font-light text-sb font-hindi'>{categoryDescription}</p>
             <p className='text-lg text-right font-medium m-2 mx-4 md:text-xl '>{`PAGE : 1`}</p>
             <Stories stories={finalDataArray} />

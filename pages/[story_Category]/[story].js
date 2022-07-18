@@ -31,7 +31,7 @@ function Story({ story_details }) {
 
     const { story, story_Category } = router.query;
 
-    const filter = [{ sizeName: 'Small', sizecode: 'sm' }, { sizeName: 'Medium', sizecode: 'md' }, { sizeName: 'Large', sizecode: 'lg' }, { sizeName: 'XL', sizecode: 'xl' }, { sizeName: '2XL', sizecode: '2xl' },]
+    const filter = [{ sizeName: 'Small', sizecode: 'sm' }, { sizeName: 'Medium', sizecode: 'md' }, { sizeName: 'Large', sizecode: 'lg' }, { sizeName: 'XL', sizecode: 'xl' }, { sizeName: '2XL', sizecode: '2xl' }, { sizeName: '3XL', sizecode: '3xl' }]
 
     const fontSizeChangerOnclick = (sizeCode) => {
         setfontSize(sizeCode)
@@ -53,47 +53,18 @@ function Story({ story_details }) {
         <div className="md:w-3/5 p-4 bg-orange-50  m-2 shadow rounded-lg "  >
             <Head>
                 <meta name="referrer" content="no-referrer" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta charset="UTF-8" />
-                1
+
                 <title>{`${story_Category.replace('-', ' ')} - ${story_details.Title}`}</title>
 
-                <meta name="description"
-                    content={story_details.description[0]} />
-                <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-                <meta property="og:locale" content="hi_IN" />
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content={`${story_Category.replace('-', ' ')} - ${story_details.Title}`} />
-                <meta property="og:description"
-                    content={story_details.description[0]} />
-                <meta property="og:url" content={`https://www.desikahaniya.in/${story_Category}/${story}`} />
-                <meta property="og:site_name" content="Free Hindi Sex Stories" />
+                <meta name="description" content={story_details.description[0]} />
 
-                {story_details.tagsArray.map(tag => {
-                    return (
-
-                        <meta key={tag} property="article:tag" content={tag} />
-                    )
-                })}
-
-
-                <meta property="article:section" content={story_Category} />
-                <meta property="article:published_time" content="2022-03-25T07:07:39+05:30" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${story_Category.replace('-', ' ')} - ${story_details.Title}`} />
-                <meta name="twitter:description"
-                    content={story_details.description[0]} />
-                <meta name="twitter:label1" content="Written by" />
-                <meta name="twitter:data1" content="दिल्ली बॉय" />
-                <meta name="twitter:label2" content="Time to read" />
-                <meta name="twitter:data2" content="Less than a minute" />
             </Head>
             <div className='flex items-center justify-between'>
 
                 <h1 className='text-xl md:text-2xl font-semibold text-orange-800'>{story_details.Title}</h1>
                 <Menu as="div" className={` relative  text-left  md:scale-125 `}>
                     <div className=' w-fit '>
-                        <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md border border-gray-300 shadow-sm px-1 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <Menu.Button className="inline-flex justify-center cursor-pointer  w-full rounded-md  shadow-sm px-2 py-2 bg-slate-200 text-sm font-medium text-gray-700 hover:bg-gray-50">
                             Text Size
                             {/* <img className='ml-2' src='https://cdn-icons.flaticon.com/png/512/2043/premium/2043488.png?token=exp=1647712043~hmac=80017e50d71fb76634fd067d627f6063' alt='loading' height={14} width={14}></img> */}
                         </Menu.Button>
@@ -177,7 +148,7 @@ function Story({ story_details }) {
 
                         {story_details.tagsArray.map(tag => {
                             return (
-                                <Link key={tag} href={`/tag/${tag.toLowerCase().replace(/ /g,"-")}`}>
+                                <Link key={tag} href={`/tag/${tag.toLowerCase().replace(/ /g, "-")}`}>
                                     <a>
                                         <p className='hover:text-red-800 cursor-pointer font-semibold underline rounded text-xs m- border-gray-500  ' >{tag}</p>
                                     </a>

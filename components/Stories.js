@@ -16,7 +16,7 @@ function Stories({ stories }) {
     return (
         <div className="">
             <BannerAds />
-            <div className='grid grid-cols-1 p-1 md:grid-cols-2'
+            <div className='grid grid-cols-1 p-1 md:grid-cols-2 gap-2 md:gap-3 lg:gap-4'
             >
                 {
                     stories.map(story => {

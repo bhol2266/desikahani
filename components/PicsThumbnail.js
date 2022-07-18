@@ -14,20 +14,19 @@ function PicsThumbnail({ data }) {
     return (
         <div>
 
-            <div className={` mb-2 animate-fade flex   flex-col justify-center  cursor-pointer  shadow-md  border-2 rounded-lg overflow-hidden	 md:hover:scale-105 transform transition duration-150 bg-white`}>
+            <div className={`animate-fade flex flex-col justify-center rounded-lg md:hover:scale-105 transform transition duration-150 bg-white`}>
                 <Link href={`/photo/${nextlink}`}>
                     <a >
 
                         <img
+                            className='object-contain '
                             loading="lazy"
-                            alt={"loading"}
+                            alt={data.title}
                             src={data.thumbnailUrl}
-                            layout='fixed'
-                            height={1080}
-                            width={1920}
+
                         ></img>
-                        <h1 className='text-sm p-1 font-bold'>{data.title}</h1>
-                        <p className='text-sm p-1 '>{data.dataAdded}</p>
+                        <h1 className='text-xs lg:text-sm p-1 font-bold font-inter'>{data.title}</h1>
+                        <p className='text-xs lg:text-sm p-1 font-poppins'>{data.dataAdded}</p>
 
                     </a>
                 </Link>
