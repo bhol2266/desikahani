@@ -47,6 +47,8 @@ export default function Home({ finalDataArray, pagination_nav_pages, currentPage
     }
 
     fetchData()
+    fetch('/api/revalidate')
+
   }, []);
 
 
